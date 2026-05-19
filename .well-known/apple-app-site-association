@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "WG6573LGM7.com.morningdewll.devo",
+        "paths": ["/", "/invite/*"]
+      }
+    ]
+  }
+}
