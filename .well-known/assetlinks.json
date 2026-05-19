@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.morningdewll.devo",
+      "sha256_cert_fingerprints": [
+        "A9:E1:40:98:E5:04:43:F5:E3:21:FE:2D:8D:BD:E0:35:28:93:92:26:42:EC:D1:AD:FC:44:45:48:12:F8:E5:17"
+      ]
+    }
+  }
+]
