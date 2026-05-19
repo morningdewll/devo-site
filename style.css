@@ -1,0 +1,234 @@
+:root {
+  --cream: #FAF7F2;
+  --parchment: #F2EAD8;
+  --ink: #2A2520;
+  --ember: #6B6560;
+  --taupe: #B8B0A4;
+  --gold: #C08A3E;
+  --sage: #5C6B52;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--sage); }
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+/* ─── Brand mark in upper-left ─────────────────────────────────────────── */
+header.site {
+  padding: 20px 28px;
+  background: transparent;
+}
+header.site .inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+header.site .brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+/* ─── Hero ─────────────────────────────────────────────────────────────── */
+section.hero { text-align: center; padding-top: 16px; padding-bottom: 56px; }
+section.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 56px;
+  letter-spacing: 1px;
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-weight: 600;
+}
+section.hero .tagline {
+  font-size: 22px;
+  color: var(--ember);
+  margin: 0 0 28px;
+  font-weight: 500;
+}
+section.hero .hook {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--sage);
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+/* ─── Install CTA ──────────────────────────────────────────────────────── */
+.cta {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.cta a, .cta span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.cta a:hover {
+  background: var(--sage);
+  color: var(--cream);
+  transform: translateY(-1px);
+}
+.cta .pending {
+  background: var(--parchment);
+  color: var(--ember);
+  cursor: default;
+  border: 1px solid var(--taupe);
+}
+.cta-note {
+  font-size: 13px;
+  color: var(--ember);
+  margin-top: 18px;
+  text-align: center;
+}
+
+/* ─── How it works ─────────────────────────────────────────────────────── */
+section.how { padding: 48px 0; border-top: 1px solid var(--taupe); }
+section.how h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  margin: 0 0 28px;
+  color: var(--ink);
+  text-align: center;
+}
+.steps {
+  display: grid;
+  gap: 20px;
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.steps li {
+  background: var(--parchment);
+  border-radius: 14px;
+  padding: 22px 24px 20px 64px;
+  position: relative;
+}
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: Georgia, serif;
+}
+.steps li .step-title {
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.steps li .step-body {
+  font-size: 15px;
+  color: var(--ember);
+  line-height: 1.5;
+}
+
+/* ─── What makes devo lane ─────────────────────────────────────────────── */
+section.lane { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
+section.lane h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  margin: 0 0 28px;
+  color: var(--ink);
+}
+.lane-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 720px;
+}
+.lane-point {
+  background: var(--cream);
+  padding: 24px 18px;
+  border: 1px solid var(--taupe);
+  border-radius: 14px;
+}
+.lane-point .lane-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: var(--gold);
+  font-family: Georgia, serif;
+}
+.lane-point h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.lane-point p {
+  font-size: 14px;
+  color: var(--ember);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────── */
+footer.site {
+  border-top: 1px solid var(--taupe);
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--ember);
+  font-size: 13px;
+  background: var(--parchment);
+}
+footer.site .brand {
+  font-family: Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+footer.site a { color: var(--ember); margin: 0 10px; }
+footer.site a:hover { color: var(--gold); }
+footer.site .legal { margin-top: 8px; font-size: 12px; }
+
+/* ─── Mobile ───────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  main { padding: 40px 18px 72px; }
+  section.hero h1 { font-size: 44px; }
+  section.hero .tagline { font-size: 19px; }
+  section.hero .hook { font-size: 17px; }
+  section.how h2, section.lane h2 { font-size: 23px; }
+  .lane-points { grid-template-columns: 1fr; }
+  .cta a, .cta span { width: 100%; max-width: 320px; }
+}
