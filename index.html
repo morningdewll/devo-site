@@ -30,10 +30,14 @@
       <p class="hook">You can&rsquo;t see what your friends wrote until you write your own.</p>
 
       <div class="cta">
-        <span class="pending" aria-label="iOS coming soon">App Store &mdash; coming soon</span>
-        <span class="pending" aria-label="Play Store coming soon">Google Play &mdash; coming soon</span>
+        <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">
+          Get devo on the App Store
+        </a>
+        <a class="android-contact" href="mailto:support@devo.fyi?subject=devo%20Android%20early%20access" aria-label="Email support for Android early access">
+          Android &mdash; closed beta (email for access)
+        </a>
       </div>
-      <p class="cta-note">Launching to closed beta now. Public launch shortly.</p>
+      <p class="cta-note">iOS now available. Android in closed beta &mdash; email <a href="mailto:support@devo.fyi">support@devo.fyi</a> for early access.</p>
     </section>
 
     <section class="how">
@@ -86,6 +90,29 @@
     </div>
     <div class="legal" style="margin-top: 12px; color: var(--ember); opacity: 0.7;">&copy; 2026 devo</div>
   </footer>
+
+    <script>
+      // Capture per-person ref into localStorage for the re-tap path; redirect
+      // iOS visitors directly to the App Store. Android visitors see the page
+      // (contact-support fallback). Desktop visitors see the page as-is.
+      (function () {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var ref = params.get('ref');
+          if (ref && ref.length > 0 && ref.length <= 64) {
+            window.localStorage.setItem('devo_pending_signup_ref', ref);
+          }
+        } catch (e) {
+          // localStorage unavailable (private mode, etc.) — ignore.
+        }
+
+        var ua = navigator.userAgent || '';
+        var isIOS = /iPhone|iPad|iPod/.test(ua) && !/Windows/.test(ua);
+        if (isIOS) {
+          window.location.replace('https://apps.apple.com/us/app/devo-quiet-time/id6768868360');
+        }
+      })();
+    </script>
 
 </body>
 </html>
