@@ -222,6 +222,41 @@ footer.site a { color: var(--ember); margin: 0 10px; }
 footer.site a:hover { color: var(--gold); }
 footer.site .legal { margin-top: 8px; font-size: 12px; }
 
+/* ─── App Store + Android CTAs (added 2026-05-21) ──────────────────────── */
+.cta .app-store,
+.cta .android-contact {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  margin: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-family: system-ui, sans-serif;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.cta .app-store {
+  background: var(--gold);
+  color: #FFF;
+}
+
+.cta .android-contact {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+
+.cta .app-store:hover,
+.cta .android-contact:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.cta-note a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
 /* ─── Mobile ───────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   main { padding: 40px 18px 72px; }
