@@ -28,7 +28,7 @@
       <h2>TL;DR</h2>
       <ul>
         <li>We collect your email address (for sign-in), your phone number (so friends can find you), the reflections and photos you choose to post, and your friend / group connections.</li>
-        <li>If you allow it, we read your phone's contacts to find which of them are on devo &mdash; only one-way hashes leave your device, never names.</li>
+        <li>If you allow it, we read your phone's contacts to find which of them are on devo. Only one-way hashes leave your device, never names.</li>
         <li>We use Supabase (a third-party cloud database) to store your data.</li>
         <li>We send push notifications when friends interact with your posts. You can turn this off in settings.</li>
         <li>We do not sell your data. We do not run ads. We do not share your data with anyone outside the service providers listed below.</li>
@@ -50,7 +50,7 @@
     <p>When you sign up, we ask for your phone number so that other people you know can find you on devo. We store the number in E.164 format and a one-way SHA-256 hash of it. Your number is never shared with third parties beyond the storage providers listed below. You can change your number or turn off &ldquo;Discoverable by phone&rdquo; in Settings at any time. Deleting your account removes the phone number permanently.</p>
 
     <h3 id="contacts">Contacts (optional, with permission)</h3>
-    <p>If you allow devo access to your contacts, we read the phone numbers from your device contact book on-device, hash each one with SHA-256, and send only the hashes to our server to check which of them are on devo. We do <strong>not</strong> store your contact list. We <strong>never</strong> transmit names, email addresses, or any contact field other than the phone hashes. The hashes are queried against our database and discarded &mdash; not persisted. You can revoke this permission at any time in your phone&rsquo;s Settings.</p>
+    <p>If you allow devo access to your contacts, we read the phone numbers from your device contact book on-device, hash each one with SHA-256, and send only the hashes to our server to check which of them are on devo. We do <strong>not</strong> store your contact list. We <strong>never</strong> transmit names, email addresses, or any contact field other than the phone hashes. The hashes are queried against our database and discarded, not persisted. You can revoke this permission at any time in your phone&rsquo;s Settings.</p>
 
     <h3>Content you create</h3>
     <ul>
@@ -92,10 +92,10 @@
 
     <h2>Where your data is stored</h2>
     <ul>
-      <li><strong>Supabase</strong> (<code>supabase.com</code>) &mdash; primary database, file storage (your photos), authentication</li>
-      <li><strong>Apple Push Notification Service</strong> &mdash; iOS push delivery</li>
-      <li><strong>Firebase Cloud Messaging</strong> (Google) &mdash; Android push delivery</li>
-      <li><strong>Expo / EAS</strong> &mdash; over-the-air app updates</li>
+      <li><strong>Supabase</strong> (<code>supabase.com</code>): primary database, file storage (your photos), authentication</li>
+      <li><strong>Apple Push Notification Service</strong>: iOS push delivery</li>
+      <li><strong>Firebase Cloud Messaging</strong> (Google): Android push delivery</li>
+      <li><strong>Expo / EAS</strong>: over-the-air app updates</li>
     </ul>
     <p>These providers process data on our behalf under their own terms. They do not have permission to use your data for any other purpose.</p>
 
@@ -116,7 +116,7 @@
       <li>Disable push notifications (Settings)</li>
       <li>Change your phone number or toggle &ldquo;Discoverable by phone&rdquo; (Settings)</li>
       <li>Revoke contacts access in your phone&rsquo;s Settings</li>
-      <li>Delete your account from Settings &rarr; Delete account. Deletion is immediate and permanent &mdash; your auth record, profile, reflections, photos, friend connections, and phone number are removed from our database at the moment you confirm.</li>
+      <li>Delete your account from Settings &rarr; Delete account. Deletion is immediate and permanent. Your auth record, profile, reflections, photos, friend connections, and phone number are removed from our database at the moment you confirm.</li>
     </ul>
 
     <h2>Children</h2>
