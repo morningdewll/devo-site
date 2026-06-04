@@ -237,7 +237,7 @@ footer.site .legal { margin-top: 8px; font-size: 12px; }
 
 .cta .app-store {
   background: var(--gold);
-  color: #FFF;
+  color: var(--ink); /* WCAG AA: ink on gold = ~5:1 (white was 3:1) */
 }
 
 .cta .android-contact {
