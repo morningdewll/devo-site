@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>devo — Bible reflection with the people who matter</title>
-  <meta name="description" content="A small daily Bible journal shared with your closest friends. Write your reflection first. Then your friends' show up. iOS now. Android in closed beta.">
+  <meta name="description" content="A small daily Bible journal shared with your closest friends. Write your reflection first. Then your friends' show up. Free on iOS and Android.">
   <meta name="theme-color" content="#FAF7F2">
   <link rel="stylesheet" href="style.css">
 
   <!-- Open Graph / preview -->
   <meta property="og:title" content="devo — Bible reflection with the people who matter">
-  <meta property="og:description" content="A small daily Bible journal shared with your closest friends. Write your reflection first. Then your friends' show up. iOS now. Android in closed beta.">
+  <meta property="og:description" content="A small daily Bible journal shared with your closest friends. Write your reflection first. Then your friends' show up. Free on iOS and Android.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devo.fyi/">
   <link rel="canonical" href="https://devo.fyi/">
@@ -22,7 +22,7 @@
     "name": "devo",
     "description": "A free post-first devotional app: post your own Bible reflection first, then your closest friends' reflections unlock. Private by design: no public feed, no follower count, no algorithm.",
     "applicationCategory": "LifestyleApplication",
-    "operatingSystem": "iOS",
+    "operatingSystem": "iOS, Android",
     "url": "https://devo.fyi",
     "downloadUrl": "https://apps.apple.com/us/app/devo-quiet-time/id6768868360",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -65,11 +65,11 @@
         <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">
           Get devo on the App Store
         </a>
-        <a class="android-contact" href="mailto:support@devo.fyi?subject=devo%20Android%20early%20access" aria-label="Email for Android closed-beta access">
-          Android closed beta: email for access
+        <a class="google-play" href="https://play.google.com/store/apps/details?id=com.morningdewll.devo" aria-label="Get devo on Google Play">
+          Get devo on Google Play
         </a>
       </div>
-      <p class="cta-note">iOS is live. Android is in closed beta. Email <a href="mailto:support@devo.fyi">support@devo.fyi</a> and we&rsquo;ll get you in.</p>
+      <p class="cta-note">devo is free on iOS and Android.</p>
     </section>
 
     <section class="how">
@@ -138,8 +138,8 @@
 
     <script>
       // Capture per-person ref into localStorage for the re-tap path; redirect
-      // iOS visitors directly to the App Store. Android visitors see the page
-      // (contact-support fallback). Desktop visitors see the page as-is.
+      // iOS visitors directly to the App Store, Android visitors to Google Play.
+      // Desktop visitors see the page as-is.
       (function () {
         try {
           var params = new URLSearchParams(window.location.search);
@@ -153,8 +153,11 @@
 
         var ua = navigator.userAgent || '';
         var isIOS = /iPhone|iPad|iPod/.test(ua) && !/Windows/.test(ua);
+        var isAndroid = /Android/.test(ua);
         if (isIOS) {
           window.location.replace('https://apps.apple.com/us/app/devo-quiet-time/id6768868360');
+        } else if (isAndroid) {
+          window.location.replace('https://play.google.com/store/apps/details?id=com.morningdewll.devo');
         }
       })();
     </script>

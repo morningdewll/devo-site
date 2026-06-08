@@ -224,6 +224,7 @@ footer.site .legal { margin-top: 8px; font-size: 12px; }
 
 /* ─── App Store + Android CTAs (added 2026-05-21) ──────────────────────── */
 .cta .app-store,
+.cta .google-play,
 .cta .android-contact {
   display: inline-block;
   padding: 0.75rem 1.25rem;
@@ -235,7 +236,8 @@ footer.site .legal { margin-top: 8px; font-size: 12px; }
   transition: transform 120ms ease, opacity 120ms ease;
 }
 
-.cta .app-store {
+.cta .app-store,
+.cta .google-play {
   background: var(--gold);
   color: var(--ink); /* WCAG AA: ink on gold = ~5:1 (white was 3:1) */
 }
@@ -247,6 +249,7 @@ footer.site .legal { margin-top: 8px; font-size: 12px; }
 }
 
 .cta .app-store:hover,
+.cta .google-play:hover,
 .cta .android-contact:hover {
   transform: translateY(-1px);
   opacity: 0.9;
