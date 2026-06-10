@@ -5,6 +5,7 @@
   --ember: #6B6560;
   --taupe: #B8B0A4;
   --gold: #C08A3E;
+  --gold-dark: #8A5E22; /* link gold: 5.3:1 on cream, 4.7:1 on parchment (AA); --gold is 2.8:1, bg-only */
   --sage: #5C6B52;
 }
 
@@ -21,8 +22,9 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--gold); text-decoration: none; }
+a { color: var(--gold-dark); text-decoration: none; }
 a:hover { color: var(--sage); }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 
 main {
   max-width: 760px;
@@ -38,7 +40,19 @@ header.site {
 header.site .inner {
   max-width: 760px;
   margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
+header.site nav a {
+  margin-left: 18px;
+  color: var(--ember);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 2px;
+  display: inline-block;
+}
+header.site nav a:hover { color: var(--ink); }
 header.site .brand {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 22px;
@@ -49,6 +63,7 @@ header.site .brand {
 
 /* ─── Hero ─────────────────────────────────────────────────────────────── */
 section.hero { text-align: center; padding-top: 16px; padding-bottom: 56px; }
+section.hero .wordmark,
 section.hero h1 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 56px;
@@ -57,8 +72,11 @@ section.hero h1 {
   color: var(--ink);
   font-weight: 600;
 }
-section.hero .tagline {
+section.hero .tagline,
+section.hero h1.tagline {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 22px;
+  letter-spacing: 0;
   color: var(--ember);
   margin: 0 0 28px;
   font-weight: 500;
@@ -80,30 +98,23 @@ section.hero .hook {
   flex-wrap: wrap;
   margin-top: 8px;
 }
-.cta a, .cta span {
+.btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: var(--ink);
-  color: var(--cream);
-  padding: 14px 24px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 16px 48px;
   border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   letter-spacing: 0.3px;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
-.cta a:hover {
-  background: var(--sage);
-  color: var(--cream);
+.btn-primary:hover {
+  color: var(--ink);
   transform: translateY(-1px);
-}
-.cta .pending {
-  background: var(--parchment);
-  color: var(--ember);
-  cursor: default;
-  border: 1px solid var(--taupe);
+  filter: brightness(0.95);
 }
 .cta-note {
   font-size: 13px;
@@ -145,7 +156,7 @@ section.how h2 {
   height: 28px;
   border-radius: 50%;
   background: var(--gold);
-  color: var(--cream);
+  color: var(--ink); /* 5.0:1 on gold (cream was 2.8:1) */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -256,17 +267,114 @@ footer.site .legal { margin-top: 8px; font-size: 12px; }
 }
 
 .cta-note a {
-  color: var(--gold);
+  color: var(--gold-dark);
   text-decoration: underline;
+}
+
+/* ─── New sections (site-pass 2026-06-10) ─────────────────────────────── */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 10px 16px;
+  border-radius: 0 0 10px 0;
+  z-index: 10;
+}
+.skip:focus { left: 0; }
+
+section.why { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
+section.why h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  margin: 0 0 28px;
+  color: var(--ink);
+}
+.why-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+}
+.why-card { background: var(--parchment); border-radius: 14px; padding: 22px 24px; }
+.why-card h3 { font-size: 16px; margin: 0 0 8px; color: var(--ink); }
+.why-card p { font-size: 15px; color: var(--ember); margin: 0; line-height: 1.55; }
+.definition {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 620px;
+  margin: 36px auto 0;
+}
+
+.tree-band { margin: 40px auto 0; text-align: center; }
+.tree-band img { max-width: 360px; width: 100%; height: auto; }
+.tree-band figcaption {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ember);
+  margin-top: 10px;
+}
+
+section.faq-home { padding: 48px 0; border-top: 1px solid var(--taupe); }
+section.faq-home h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  margin: 0 0 24px;
+  color: var(--ink);
+  text-align: center;
+}
+.faq-list { max-width: 640px; margin: 0 auto; }
+.faq-list dt { font-weight: 600; color: var(--ink); font-size: 17px; margin: 22px 0 6px; }
+.faq-list dt:first-of-type { margin-top: 0; }
+.faq-list dd { margin: 0; color: var(--ember); font-size: 15px; line-height: 1.6; }
+.faq-more { text-align: center; margin: 28px 0 0; }
+
+section.learn { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
+section.learn h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+.learn-links { list-style: none; padding: 0; margin: 0 auto; max-width: 460px; }
+.learn-links a { display: block; padding: 12px 16px; border-radius: 10px; font-size: 16px; }
+.learn-links a:hover { background: var(--parchment); color: var(--gold-dark); }
+
+section.final { text-align: center; padding: 56px 0 8px; border-top: 1px solid var(--taupe); }
+section.final h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  margin: 0 0 24px;
+  color: var(--ink);
+}
+
+footer.site .copyright { margin-top: 12px; opacity: 0.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ─── Tablet (601-820px) ───────────────────────────────────────────────── */
+@media (max-width: 820px) {
+  .lane-points { grid-template-columns: 1fr; max-width: 480px; }
 }
 
 /* ─── Mobile ───────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   main { padding: 40px 18px 72px; }
-  section.hero h1 { font-size: 44px; }
-  section.hero .tagline { font-size: 19px; }
+  section.hero .wordmark, section.hero h1 { font-size: 44px; }
+  section.hero .tagline, section.hero h1.tagline { font-size: 19px; }
   section.hero .hook { font-size: 17px; }
-  section.how h2, section.lane h2 { font-size: 23px; }
+  section.how h2, section.lane h2, section.why h2, section.faq-home h2,
+  section.learn h2, section.final h2 { font-size: 23px; }
   .lane-points { grid-template-columns: 1fr; }
-  .cta a, .cta span { width: 100%; max-width: 320px; }
+  .why-cards { grid-template-columns: 1fr; }
+  .definition { font-size: 17px; }
+  .cta .app-store, .cta .google-play, .btn-primary { width: 100%; max-width: 320px; }
 }

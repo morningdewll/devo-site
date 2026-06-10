@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-label="The devo tree growing through three stages as a streak continues">
+  <!-- ground -->
+  <path d="M24 102 H336" stroke="#2A2520" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- stage 1: sprout -->
+  <path d="M80 102 V84" stroke="#2A2520" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M80 88 C80 81 74 78 69 79 C70 85 75 89 80 88 Z" fill="#5C6B52"/>
+  <!-- stage 2: sapling -->
+  <path d="M180 102 V64" stroke="#2A2520" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M180 76 C180 68 172 64 165 65 C166 73 173 77 180 76 Z" fill="#5C6B52"/>
+  <path d="M180 68 C180 60 188 56 195 57 C194 65 187 69 180 68 Z" fill="#C08A3E"/>
+  <!-- stage 3: grown tree -->
+  <path d="M282 102 V46" stroke="#2A2520" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M282 60 C282 50 271 45 262 46 C263 56 272 61 282 60 Z" fill="#5C6B52"/>
+  <path d="M282 48 C282 38 293 33 302 34 C301 44 292 49 282 48 Z" fill="#5C6B52"/>
+  <path d="M282 70 C282 62 290 58 297 59 C296 67 289 71 282 70 Z" fill="#C08A3E" opacity="0.9"/>
+  <path d="M282 80 C282 73 275 70 269 71 C270 77 276 81 282 80 Z" fill="#5C6B52" opacity="0.7"/>
+</svg>

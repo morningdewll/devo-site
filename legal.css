@@ -5,6 +5,7 @@
   --ember: #6B6560;
   --taupe: #B8B0A4;
   --gold: #C08A3E;
+  --gold-dark: #8A5E22; /* link gold: AA on cream + parchment */
   --sage: #5C6B52;
 }
 
@@ -94,8 +95,9 @@ li { margin-bottom: 4px; }
 }
 .tldr h2 { margin-top: 0; }
 
-a { color: var(--gold); }
+a { color: var(--gold-dark); }
 a:hover { color: var(--sage); }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 
 hr {
   border: 0;
