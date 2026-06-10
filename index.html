@@ -277,12 +277,42 @@
         var ua = navigator.userAgent || '';
         var isIOS = /iPhone|iPad|iPod/.test(ua) && !/Windows/.test(ua);
         var isAndroid = /Android/.test(ua);
-        if (ref && isIOS) {
-          window.location.replace('https://apps.apple.com/us/app/devo-quiet-time/id6768868360');
+        if (ref && isAndroid) {
+          // referral-v2: Play Install Referrer carries the ref through the
+          // store hop; the app reads it back on first launch.
+          window.location.replace(
+            'https://play.google.com/store/apps/details?id=com.morningdewll.devo&referrer=' +
+              encodeURIComponent(ref)
+          );
           return;
         }
-        if (ref && isAndroid) {
-          window.location.replace('https://play.google.com/store/apps/details?id=com.morningdewll.devo');
+        if (ref && isIOS) {
+          // referral-v2: no instant redirect on iOS — the App Store strips
+          // ?ref=, so this state tells the invitee how to reconnect via the
+          // in-app "Did a friend invite you?" picker. One extra tap buys back
+          // the attribution iOS loses. Handle is regex-constrained before any
+          // HTML interpolation.
+          var m = ref.match(/^u-([a-z0-9_]{3,24})$/i);
+          var handle = m ? '@' + m[1].toLowerCase() : null;
+          var overlay = document.createElement('div');
+          overlay.setAttribute(
+            'style',
+            'position:fixed;inset:0;z-index:9999;background:var(--cream,#FAF7F2);' +
+              'display:flex;align-items:center;justify-content:center;padding:24px;'
+          );
+          overlay.innerHTML =
+            '<div style="max-width:420px;text-align:center;">' +
+            '<p style="font-family:Georgia,\'Times New Roman\',serif;font-size:28px;color:var(--ink,#2A2520);margin:0 0 12px;">' +
+            (handle ? handle + ' invited you to devo' : 'A friend invited you to devo') +
+            '</p>' +
+            '<p style="font-size:16px;line-height:1.5;color:var(--ember,#6B6560);margin:0 0 28px;">' +
+            'Get the app, then answer &ldquo;Did a friend invite you?&rdquo;' +
+            (handle ? ' with <strong>' + handle + '</strong>' : '') +
+            ' &mdash; you&rsquo;ll be connected as soon as they accept.' +
+            '</p>' +
+            '<a class="btn-primary" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo on the App&nbsp;Store</a>' +
+            '</div>';
+          document.body.appendChild(overlay);
           return;
         }
 
