@@ -6,9 +6,11 @@ This repo is the apex landing page plus the legal, support, and FAQ pages. It al
 
 ## What lives here
 
-- `index.html`: the apex landing page at [devo.fyi](https://devo.fyi). Headline, how-it-works, App Store link, Android closed-beta contact.
+- `index.html`: the apex landing page at [devo.fyi](https://devo.fyi). Headline, failure modes, how-it-works, FAQ, single "Get devo" CTA (App Store / Google Play picked by device, no redirect).
+- SEO cluster pages: `post-first-devotionals.html`, `christian-bereal.html`, `christian-quiet-time-app.html`, `read-the-bible-with-friends.html`, `bible-reading-streak.html`, `christian-accountability-app.html`, `small-group-bible-app.html`, `private-christian-social-media.html`.
 - `privacy.html`, `terms.html`, `support.html`, `delete-account.html`, `faq.html`: the legal and support pages required by Apple and Google for the app stores.
-- `style.css`, `legal.css`: site styles. `style.css` covers the landing page, `legal.css` covers the document pages.
+- `style.css`, `legal.css`: site styles. `style.css` covers the landing pages, `legal.css` covers the document pages.
+- `favicon.ico` / `favicon.svg` / `apple-touch-icon.png` / `site.webmanifest` / `assets/`: icons, the OG share image, and the tree SVG. The icon and OG art are hand-authored SVG in the brand palette.
 - `.well-known/apple-app-site-association`: Apple Universal Links manifest. Lets `devo.fyi` links open inside the iOS app when it's installed.
 - `.well-known/assetlinks.json`: Android App Links manifest. Same idea for Android.
 - `CNAME`: sets the custom domain to `devo.fyi`.

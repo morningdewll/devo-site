@@ -3,73 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>devo — Bible reflection with the people who matter</title>
-  <meta name="description" content="A small daily Bible journal shared with your closest friends. Write your reflection first. Then your friends' show up. Free on iOS and Android.">
+  <title>devo: Bible reflection with the people who matter</title>
+  <meta name="description" content="devo is a free post-first devotional app. Write your reflection on today's verse first, then your closest friends' unlock. No public feed. Free on iOS and Android.">
   <meta name="theme-color" content="#FAF7F2">
+  <meta name="apple-itunes-app" content="app-id=6768868360">
   <link rel="stylesheet" href="style.css">
 
   <!-- Open Graph / preview -->
-  <meta property="og:title" content="devo — Bible reflection with the people who matter">
-  <meta property="og:description" content="A small daily Bible journal shared with your closest friends. Write your reflection first. Then your friends' show up. Free on iOS and Android.">
+  <meta property="og:title" content="devo: Bible reflection with the people who matter">
+  <meta property="og:description" content="A free post-first devotional app. Write your reflection on today's verse first, then your closest friends' unlock. No public feed, no followers, no algorithm.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devo.fyi/">
   <link rel="canonical" href="https://devo.fyi/">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:site_name" content="devo">
+  <meta property="og:image" content="https://devo.fyi/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="devo: Bible reflection with the people who matter. post to unlock.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "devo",
-    "description": "A free post-first devotional app: post your own Bible reflection first, then your closest friends' reflections unlock. Private by design: no public feed, no follower count, no algorithm.",
-    "applicationCategory": "LifestyleApplication",
-    "operatingSystem": "iOS, Android",
-    "url": "https://devo.fyi",
-    "downloadUrl": "https://apps.apple.com/us/app/devo-quiet-time/id6768868360",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "devo",
-    "url": "https://devo.fyi",
-    "email": "support@devo.fyi"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "devo",
-    "url": "https://devo.fyi"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://devo.fyi/#org",
+        "name": "devo",
+        "url": "https://devo.fyi",
+        "email": "support@devo.fyi",
+        "logo": { "@type": "ImageObject", "url": "https://devo.fyi/assets/icon-512.png" },
+        "sameAs": [
+          "https://apps.apple.com/us/app/devo-quiet-time/id6768868360",
+          "https://play.google.com/store/apps/details?id=com.morningdewll.devo"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://devo.fyi/#website",
+        "name": "devo",
+        "url": "https://devo.fyi",
+        "publisher": { "@id": "https://devo.fyi/#org" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://devo.fyi/#app",
+        "name": "devo",
+        "description": "A free post-first devotional app: post your own Bible reflection first, then your closest friends' reflections unlock. Private by design: no public feed, no follower count, no algorithm.",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS, Android",
+        "url": "https://devo.fyi",
+        "image": "https://devo.fyi/assets/og-image.png",
+        "downloadUrl": [
+          "https://apps.apple.com/us/app/devo-quiet-time/id6768868360",
+          "https://play.google.com/store/apps/details?id=com.morningdewll.devo"
+        ],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://devo.fyi/#org" },
+        "publisher": { "@id": "https://devo.fyi/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is devo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "devo is a daily Bible-reflection journal you share with your friends. Write what today's verse is stirring in you, then pick who sees it: just you, your friends, or a group you choose. No strangers and no algorithm."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is devo free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. devo is free, with no ads, no paywall, no subscription."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can't I see my friends' reflections until I post my own?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It's the rule devo is built on: write first, read second. Post today's reflection and your friends' unlock. They can't read yours until they've written one either. The gate works the same for everyone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I miss a day?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "One missed day is fine and the tree keeps growing. Miss two days in a row and the tree withers. Plant a new seed and start again. The withered tree stays in your past trees, so the season you had is remembered, not erased."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
 <body>
 
+  <a class="skip" href="#main">Skip to content</a>
+
   <header class="site">
     <div class="inner">
       <span class="brand">devo</span>
+      <nav aria-label="Site">
+        <a href="/faq.html">FAQ</a>
+        <a href="/support.html">Support</a>
+      </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
     <section class="hero">
-      <h1>devo</h1>
-      <p class="tagline">Bible reflection with the people who matter.</p>
+      <p class="wordmark" aria-hidden="true">devo</p>
+      <h1 class="tagline">Bible reflection with the people who matter.</h1>
       <p class="hook">You can&rsquo;t see what your friends wrote until you write your own.</p>
 
       <div class="cta">
-        <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">
-          Get devo on the App Store
-        </a>
-        <a class="google-play" href="https://play.google.com/store/apps/details?id=com.morningdewll.devo" aria-label="Get devo on Google Play">
-          Get devo on Google Play
+        <a class="btn-primary js-store-link" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">
+          Get devo
         </a>
       </div>
-      <p class="cta-note">devo is free on iOS and Android.</p>
+      <p class="cta-note">Free on iOS and Android &middot;
+        <a href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">App&nbsp;Store</a> &middot;
+        <a href="https://play.google.com/store/apps/details?id=com.morningdewll.devo">Google&nbsp;Play</a>
+      </p>
+    </section>
+
+    <section class="why">
+      <h2>You&rsquo;ve probably tried both</h2>
+      <div class="why-cards">
+        <div class="why-card">
+          <h3>Posting for strangers</h3>
+          <p>Put a verse on your story and it goes to everyone: old classmates, coworkers, people you barely know. Somewhere in there it stops being reflection and starts being performance.</p>
+        </div>
+        <div class="why-card">
+          <h3>Journaling alone</h3>
+          <p>Start a private journal and it works, for a while. Then a busy week hits, nobody notices you stopped, and the journal doesn&rsquo;t ask where you went.</p>
+        </div>
+      </div>
+      <p class="definition">devo is a free post-first devotional app: you write your reflection on today&rsquo;s verse first, then your closest friends&rsquo; reflections unlock. No public feed, no followers, no algorithm.</p>
     </section>
 
     <section class="how">
@@ -77,7 +159,7 @@
       <ol class="steps">
         <li>
           <div class="step-title">Read today&rsquo;s verse. Write what you noticed.</div>
-          <div class="step-body">A small daily journal. Yours alone, until you choose to share it with your group.</div>
+          <div class="step-body">A small daily journal. Yours alone, until you choose to share it with your friends or a group.</div>
         </li>
         <li>
           <div class="step-title">Your friends&rsquo; reflections show up after yours does.</div>
@@ -85,9 +167,13 @@
         </li>
         <li>
           <div class="step-title">Your tree grows on the days you show up.</div>
-          <div class="step-body">One missed day is fine. Two in a row and your tree withers. The old one stays in your archive.</div>
+          <div class="step-body">One missed day is fine. Two in a row and your tree withers. It stays in your past trees, remembered, not erased.</div>
         </li>
       </ol>
+      <figure class="tree-band">
+        <img src="/assets/tree.svg" width="360" height="120" loading="lazy" alt="Three stages of the devo tree growing as you keep your daily devotional streak with friends">
+        <figcaption>And you don&rsquo;t grow it alone.</figcaption>
+      </figure>
     </section>
 
     <section class="lane">
@@ -111,15 +197,45 @@
       </div>
     </section>
 
-    <section class="how" style="text-align:center;">
+    <section class="faq-home">
+      <h2>Common questions</h2>
+      <dl class="faq-list">
+        <dt>What is devo?</dt>
+        <dd>devo is a daily Bible-reflection journal you share with your friends. Write what today&rsquo;s verse is stirring in you, then pick who sees it: just you, your friends, or a group you choose. No strangers and no algorithm.</dd>
+        <dt>Is devo free?</dt>
+        <dd>Yes. devo is free, with no ads, no paywall, no subscription.</dd>
+        <dt>Why can&rsquo;t I see my friends&rsquo; reflections until I post my own?</dt>
+        <dd>It&rsquo;s the rule devo is built on: write first, read second. Post today&rsquo;s reflection and your friends&rsquo; unlock. They can&rsquo;t read yours until they&rsquo;ve written one either. The gate works the same for everyone.</dd>
+        <dt>What happens if I miss a day?</dt>
+        <dd>One missed day is fine and the tree keeps growing. Miss two days in a row and the tree withers. Plant a new seed and start again. The withered tree stays in your past trees, so the season you had is remembered, not erased.</dd>
+      </dl>
+      <p class="faq-more"><a href="/faq.html">More questions, answered</a></p>
+    </section>
+
+    <section class="learn">
       <h2>Learn more</h2>
-      <p style="max-width:580px;margin:0 auto;color:var(--ember);">
-        <a href="/post-first-devotionals.html">What is a post-first devotional?</a> &middot;
-        <a href="/read-the-bible-with-friends.html">How to read the Bible with friends</a> &middot;
-        <a href="/bible-reading-streak.html">Keep a streak without the guilt</a> &middot;
-        <a href="/small-group-bible-app.html">A private, no-feed Bible app</a> &middot;
-        <a href="/christian-bereal.html">Is there a Christian BeReal?</a> &middot;
-        <a href="/faq.html">FAQ</a>
+      <ul class="learn-links">
+        <li><a href="/post-first-devotionals.html">What is a post-first devotional?</a></li>
+        <li><a href="/christian-quiet-time-app.html">A quiet time app you keep with friends</a></li>
+        <li><a href="/read-the-bible-with-friends.html">How to read the Bible with friends</a></li>
+        <li><a href="/bible-reading-streak.html">Keep a streak without the guilt</a></li>
+        <li><a href="/christian-accountability-app.html">Accountability without a checklist</a></li>
+        <li><a href="/small-group-bible-app.html">A Bible app for your small group</a></li>
+        <li><a href="/private-christian-social-media.html">Christian social media without the algorithm</a></li>
+        <li><a href="/christian-bereal.html">Is there a Christian BeReal?</a></li>
+      </ul>
+    </section>
+
+    <section class="final">
+      <h2>Read the Bible with your closest friends.</h2>
+      <div class="cta">
+        <a class="btn-primary js-store-link" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">
+          Get devo
+        </a>
+      </div>
+      <p class="cta-note">Free on iOS and Android &middot;
+        <a href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">App&nbsp;Store</a> &middot;
+        <a href="https://play.google.com/store/apps/details?id=com.morningdewll.devo">Google&nbsp;Play</a>
       </p>
     </section>
 
@@ -128,24 +244,31 @@
   <footer class="site">
     <div><span class="brand">devo</span></div>
     <div class="legal">
+      <a href="/">Home</a>
       <a href="/faq.html">FAQ</a>
       <a href="/support.html">Support</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
     </div>
-    <div class="legal" style="margin-top: 12px; color: var(--ember); opacity: 0.7;">&copy; 2026 devo</div>
+    <div class="legal copyright">&copy; 2026 devo</div>
   </footer>
 
     <script>
-      // Capture per-person ref into localStorage for the re-tap path; redirect
-      // iOS visitors directly to the App Store, Android visitors to Google Play.
-      // Desktop visitors see the page as-is.
+      // Capture per-person ref into localStorage for the re-tap path.
+      // Store redirect fires ONLY on invite links (?ref=...): a bare visit to
+      // devo.fyi must render the page — Googlebot smartphone's UA contains
+      // "Android", so an unconditional mobile redirect makes the homepage
+      // index as a redirect to the Play Store (and bounces every human
+      // mobile visitor before they see anything).
       (function () {
+        var ref = null;
         try {
           var params = new URLSearchParams(window.location.search);
-          var ref = params.get('ref');
+          ref = params.get('ref');
           if (ref && ref.length > 0 && ref.length <= 64) {
             window.localStorage.setItem('devo_pending_signup_ref', ref);
+          } else {
+            ref = null;
           }
         } catch (e) {
           // localStorage unavailable (private mode, etc.) — ignore.
@@ -154,10 +277,22 @@
         var ua = navigator.userAgent || '';
         var isIOS = /iPhone|iPad|iPod/.test(ua) && !/Windows/.test(ua);
         var isAndroid = /Android/.test(ua);
-        if (isIOS) {
+        if (ref && isIOS) {
           window.location.replace('https://apps.apple.com/us/app/devo-quiet-time/id6768868360');
-        } else if (isAndroid) {
+          return;
+        }
+        if (ref && isAndroid) {
           window.location.replace('https://play.google.com/store/apps/details?id=com.morningdewll.devo');
+          return;
+        }
+
+        // No redirect for organic visits: point the primary button at the
+        // visitor's own store instead.
+        if (isAndroid) {
+          var links = document.querySelectorAll('.js-store-link');
+          for (var i = 0; i < links.length; i++) {
+            links[i].href = 'https://play.google.com/store/apps/details?id=com.morningdewll.devo';
+          }
         }
       })();
     </script>

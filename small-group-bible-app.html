@@ -32,14 +32,25 @@
       { "@type": "Question", "name": "Can I share with only some of my friends?",
         "acceptedAnswer": { "@type": "Answer", "text": "Yes. Make a group, like your church small group, your roommates, or a few friends, and share with just them instead of all your friends. You pick the audience every time you post." } },
       { "@type": "Question", "name": "Is devo free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. devo is free, with no ads, no paywall, and no subscription." } }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. devo is free, with no ads, no paywall, no subscription." } }
     ]
   }
   </script>
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:site_name" content="devo">
+  <meta property="og:image" content="https://devo.fyi/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="devo: Bible reflection with the people who matter. post to unlock.">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-  <header class="site"><div class="inner"><a class="brand" href="/">devo</a></div></header>
-  <main>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site"><div class="inner"><a class="brand" href="/">devo</a><nav aria-label="Site"><a href="/faq.html">FAQ</a> <a href="/support.html">Support</a></nav></div></header>
+  <main id="main">
 
     <section class="hero">
       <h1>A Bible app for your small group</h1>
@@ -67,7 +78,7 @@
 
     <section class="prose">
       <h2>A shared tree your group grows</h2>
-      <p>Your streak is a little tree that grows on the days you and your friends show up. Miss one day, it&rsquo;s fine. Miss two in a row and it falls. It&rsquo;s kept in your past trees, remembered, not erased. A forgiving streak you grow together, not a number you grind alone.</p>
+      <p>Your streak is a little tree that grows on the days you and your friends show up. Miss one day, it&rsquo;s fine. Miss two in a row and it withers. It&rsquo;s kept in your past trees, remembered, not erased. A forgiving streak you grow together, not a number you grind alone.</p>
     </section>
 
     <section class="prose">
@@ -77,23 +88,22 @@
 
     <section class="prose">
       <h2>Free, no ads, no paywall</h2>
-      <p>devo is free. No ads, no subscription, nothing to upgrade. If that ever changes, you&rsquo;ll hear it from the founder first, not from a paywall.</p>
+      <p>devo is free. No ads, no subscription, nothing to upgrade. If that ever changes, you&rsquo;ll hear it from me first, not from a paywall.</p>
     </section>
 
     <section class="prose">
       <h2>Common questions</h2>
       <p><strong>Is there a Bible app for a small group, with no public feed?</strong><br>Yes. devo lets you create a group and share your reflections with just them, with no public feed, no follower count, and no algorithm. You can also share with all your friends, or keep a reflection to yourself.</p>
       <p><strong>Can I share with only some of my friends?</strong><br>Yes. Make a group, like your church small group, your roommates, or a few friends, and share with just them instead of all your friends. You pick the audience every time you post.</p>
-      <p><strong>Is devo free?</strong><br>Yes. devo is free, with no ads, no paywall, and no subscription.</p>
+      <p><strong>Is devo free?</strong><br>Yes. devo is free, with no ads, no paywall, no subscription.</p>
     </section>
 
     <section class="final">
       <h2>Read the Bible with your friends.</h2>
       <div class="cta">
-        <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">Get devo on the App Store</a>
-        <a class="google-play" href="https://play.google.com/store/apps/details?id=com.morningdewll.devo" aria-label="Get devo on Google Play">Get devo on Google Play</a>
+        <a class="btn-primary js-store-link" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo</a>
       </div>
-      <p class="cta-note">devo is free on iOS and Android. More: <a href="/read-the-bible-with-friends.html">reading the Bible with friends</a> &middot; <a href="/post-first-devotionals.html">what a post-first devotional is</a>.</p>
+      <p class="cta-note">Free on iOS and Android &middot; <a href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">App&nbsp;Store</a> &middot; <a href="https://play.google.com/store/apps/details?id=com.morningdewll.devo">Google&nbsp;Play</a>. More: <a href="/read-the-bible-with-friends.html">reading the Bible with friends</a> &middot; <a href="/post-first-devotionals.html">what a post-first devotional is</a>.</p>
     </section>
 
   </main>
@@ -107,7 +117,17 @@
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
     </div>
-    <div class="legal" style="margin-top: 12px; color: var(--ember); opacity: 0.7;">&copy; 2026 devo</div>
+    <div class="legal copyright">&copy; 2026 devo</div>
   </footer>
+  <script>
+    // Point the primary CTA at the visitor's own store. No redirects.
+    (function () {
+      if (!/Android/.test(navigator.userAgent || '')) return;
+      var links = document.querySelectorAll('.js-store-link');
+      for (var i = 0; i < links.length; i++) {
+        links[i].href = 'https://play.google.com/store/apps/details?id=com.morningdewll.devo';
+      }
+    })();
+  </script>
 </body>
 </html>
