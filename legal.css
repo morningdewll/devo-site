@@ -113,7 +113,13 @@ footer.site {
   font-size: 13px;
   background: var(--parchment);
 }
-footer.site a { color: var(--ember); margin: 0 8px; }
+footer.site a {
+  color: var(--ember);
+  display: inline-block;
+  padding: 8px 6px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 code {
   background: var(--parchment);
