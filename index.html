@@ -262,6 +262,7 @@
       // mobile visitor before they see anything).
       (function () {
         var ref = null;
+        var groupCode = null;
         try {
           var params = new URLSearchParams(window.location.search);
           ref = params.get('ref');
@@ -269,6 +270,10 @@
             window.localStorage.setItem('devo_pending_signup_ref', ref);
           } else {
             ref = null;
+          }
+          var g = params.get('g');
+          if (g && /^[a-z2-9]{8}$/i.test(g.trim())) {
+            groupCode = g.trim().toUpperCase();
           }
         } catch (e) {
           // localStorage unavailable (private mode, etc.) — ignore.
@@ -313,6 +318,41 @@
             '<a class="btn-primary" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo on the App&nbsp;Store</a>' +
             '</div>';
           document.body.appendChild(overlay);
+          return;
+        }
+        if (groupCode && isAndroid) {
+          // referral-v2: group join code rides the Play Install Referrer
+          // (prefixed g- to distinguish from personal u- refs).
+          window.location.replace(
+            'https://play.google.com/store/apps/details?id=com.morningdewll.devo&referrer=' +
+              encodeURIComponent('g-' + groupCode)
+          );
+          return;
+        }
+        if (groupCode && isIOS) {
+          // referral-v2: the App Store strips the code, so show it with
+          // re-entry instructions. groupCode is regex-constrained above.
+          var gOverlay = document.createElement('div');
+          gOverlay.setAttribute(
+            'style',
+            'position:fixed;inset:0;z-index:9999;background:var(--cream,#FAF7F2);' +
+              'display:flex;align-items:center;justify-content:center;padding:24px;'
+          );
+          gOverlay.innerHTML =
+            '<div style="max-width:420px;text-align:center;">' +
+            '<p style="font-family:Georgia,\'Times New Roman\',serif;font-size:28px;color:var(--ink,#2A2520);margin:0 0 12px;">' +
+            'You&rsquo;re invited to a group on devo' +
+            '</p>' +
+            '<p style="font-size:16px;line-height:1.5;color:var(--ember,#6B6560);margin:0 0 16px;">' +
+            'Get the app, then open <strong>Groups</strong> and tap ' +
+            '&ldquo;Have a code?&rdquo; with this code:' +
+            '</p>' +
+            '<p style="font-family:Georgia,\'Times New Roman\',serif;font-size:32px;letter-spacing:6px;color:var(--ink,#2A2520);margin:0 0 28px;">' +
+            groupCode +
+            '</p>' +
+            '<a class="btn-primary" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo on the App&nbsp;Store</a>' +
+            '</div>';
+          document.body.appendChild(gOverlay);
           return;
         }
 
