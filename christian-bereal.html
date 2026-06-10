@@ -64,7 +64,7 @@
         "name": "Is devo free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. devo is free, with no ads, no paywall, and no subscription."
+          "text": "Yes. devo is free, with no ads, no paywall, no subscription."
         }
       }
     ]
@@ -97,14 +97,9 @@
       <p class="hook">post to unlock.</p>
 
       <div class="cta">
-        <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">
-          Get devo on the App Store
-        </a>
-        <a class="google-play" href="https://play.google.com/store/apps/details?id=com.morningdewll.devo" aria-label="Get devo on Google Play">
-          Get devo on Google Play
-        </a>
+        <a class="btn-primary js-store-link" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo</a>
       </div>
-      <p class="cta-note">devo is free on iOS and Android.</p>
+      <p class="cta-note">Free on iOS and Android &middot; <a href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">App&nbsp;Store</a> &middot; <a href="https://play.google.com/store/apps/details?id=com.morningdewll.devo">Google&nbsp;Play</a>.</p>
     </section>
 
     <section class="prose">
@@ -115,6 +110,7 @@
     <section class="prose">
       <h2>What people mean by &ldquo;a Christian BeReal&rdquo;</h2>
       <p>Usually three things: no performing for strangers, a daily nudge to actually show up, and only seeing your friends once you&rsquo;ve shown up yourself. That last part is the point. You can&rsquo;t lurk. You give before you get.</p>
+      <p>People search for it a dozen ways: a BeReal for Christians, a Bible BeReal, a devotional app that works like BeReal. It&rsquo;s all the same ask. The post-first gate, pointed at scripture, with your actual friends.</p>
       <p>devo is built on exactly that. Read today&rsquo;s verse, write what you noticed, and your friends&rsquo; reflections unlock.</p>
     </section>
 
@@ -142,21 +138,24 @@
 
     <section class="prose">
       <h2>The tree, instead of a streak number</h2>
-      <p>devo has a streak, but it&rsquo;s a little tree that grows on the days you and your friends show up. Miss one day, it&rsquo;s fine. Miss two in a row and it falls, but it doesn&rsquo;t vanish to zero. The old tree gets planted in your past trees, so the season you had is remembered, not erased.</p>
+      <p>devo has a streak, but it&rsquo;s a little tree that grows on the days you and your friends show up. Miss one day, it&rsquo;s fine. Miss two in a row and it withers, but it doesn&rsquo;t vanish to zero. The withered tree is planted in your past trees, so the season you had is remembered, not erased.</p>
       <p>People reach for the same name, a Christian BeReal, but the practice underneath it is older than any app. It&rsquo;s reading the Bible with the people who actually know you. Here&rsquo;s the full idea: <a href="/post-first-devotionals.html">what a post-first devotional is</a>.</p>
+    </section>
+
+    <section class="prose">
+      <h2>Common questions</h2>
+      <p><strong>Is there a Christian version of BeReal?</strong><br>The closest thing is devo. People call it a Christian BeReal because of one shared idea: you post your own first, then you get to see everyone else&rsquo;s. devo applies that to your time in the Word, with your close friends. devo is not affiliated with BeReal.</p>
+      <p><strong>How is devo different from BeReal?</strong><br>BeReal is a dual-camera photo of your random moment that disappears. devo is your daily Bible reflection, shared only with your friends, and it keeps your history instead of disappearing it. Both share the post-first idea: you write your own before you can read your friends&rsquo;.</p>
+      <p><strong>Is devo affiliated with BeReal?</strong><br>No. devo is an independent app and is not affiliated with or endorsed by BeReal. People just use &ldquo;Christian BeReal&rdquo; as shorthand for the post-first idea.</p>
+      <p><strong>Is devo free?</strong><br>Yes. devo is free, with no ads, no paywall, no subscription.</p>
     </section>
 
     <section class="final">
       <h2>Read the Bible with your closest friends.</h2>
       <div class="cta">
-        <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">
-          Get devo on the App Store
-        </a>
-        <a class="google-play" href="https://play.google.com/store/apps/details?id=com.morningdewll.devo" aria-label="Get devo on Google Play">
-          Get devo on Google Play
-        </a>
+        <a class="btn-primary js-store-link" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo</a>
       </div>
-      <p class="cta-note">devo is free on iOS and Android.</p>
+      <p class="cta-note">Free on iOS and Android &middot; <a href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">App&nbsp;Store</a> &middot; <a href="https://play.google.com/store/apps/details?id=com.morningdewll.devo">Google&nbsp;Play</a>.<br>More: <a href="/post-first-devotionals.html">what a post-first devotional is</a> &middot; <a href="/read-the-bible-with-friends.html">reading the Bible with friends</a> &middot; <a href="/bible-reading-streak.html">a streak without the guilt</a>.</p>
     </section>
 
   </main>
@@ -174,5 +173,15 @@
     <div class="legal" style="margin-top: 12px; color: var(--ember); opacity: 0.7;">&copy; 2026 devo</div>
   </footer>
 
+  <script>
+    // Point the primary CTA at the visitor's own store. No redirects.
+    (function () {
+      if (!/Android/.test(navigator.userAgent || '')) return;
+      var links = document.querySelectorAll('.js-store-link');
+      for (var i = 0; i < links.length; i++) {
+        links[i].href = 'https://play.google.com/store/apps/details?id=com.morningdewll.devo';
+      }
+    })();
+  </script>
 </body>
 </html>

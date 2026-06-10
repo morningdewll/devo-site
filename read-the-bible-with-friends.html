@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#FAF7F2">
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://devo.fyi/read-the-bible-with-friends.html">
-  <meta property="og:title" content="How to Read the Bible With Friends (Without It Fizzling Out) | devo">
+  <meta property="og:title" content="How to Read the Bible With Friends (and Keep It Going) | devo">
   <meta property="og:description" content="A short honest guide to reading the Bible with friends and keeping it going, even long distance.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://devo.fyi/read-the-bible-with-friends.html">
@@ -102,10 +102,9 @@
     <section class="final">
       <h2>Read the Bible with your friends, free.</h2>
       <div class="cta">
-        <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">Get devo on the App Store</a>
-        <a class="google-play" href="https://play.google.com/store/apps/details?id=com.morningdewll.devo" aria-label="Get devo on Google Play">Get devo on Google Play</a>
+        <a class="btn-primary js-store-link" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo</a>
       </div>
-      <p class="cta-note">devo is free on iOS and Android. More: <a href="/post-first-devotionals.html">what a post-first devotional is</a> &middot; <a href="/bible-reading-streak.html">keeping a streak without the guilt</a>.</p>
+      <p class="cta-note">Free on iOS and Android &middot; <a href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">App&nbsp;Store</a> &middot; <a href="https://play.google.com/store/apps/details?id=com.morningdewll.devo">Google&nbsp;Play</a>. More: <a href="/post-first-devotionals.html">what a post-first devotional is</a> &middot; <a href="/bible-reading-streak.html">keeping a streak without the guilt</a>.</p>
     </section>
 
   </main>
@@ -121,5 +120,15 @@
     </div>
     <div class="legal" style="margin-top: 12px; color: var(--ember); opacity: 0.7;">&copy; 2026 devo</div>
   </footer>
+  <script>
+    // Point the primary CTA at the visitor's own store. No redirects.
+    (function () {
+      if (!/Android/.test(navigator.userAgent || '')) return;
+      var links = document.querySelectorAll('.js-store-link');
+      for (var i = 0; i < links.length; i++) {
+        links[i].href = 'https://play.google.com/store/apps/details?id=com.morningdewll.devo';
+      }
+    })();
+  </script>
 </body>
 </html>

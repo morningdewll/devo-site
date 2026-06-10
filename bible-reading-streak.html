@@ -32,7 +32,7 @@
       { "@type": "Question", "name": "What is the never-miss-twice rule?",
         "acceptedAnswer": { "@type": "Answer", "text": "Never miss twice means a single off day doesn't break you, but missing two days in a row does. It builds in slack for real life while still keeping you honest." } },
       { "@type": "Question", "name": "What happens if you miss a day on devo?",
-        "acceptedAnswer": { "@type": "Answer", "text": "One missed day is fine and your tree keeps growing. Miss two in a row and the tree falls, but it doesn't vanish to zero. The old tree is kept in your past trees, so the season you had is remembered. It's a forgiving streak, not a guilt trip." } }
+        "acceptedAnswer": { "@type": "Answer", "text": "One missed day is fine and your tree keeps growing. Miss two in a row and the tree withers, but it doesn't vanish to zero. The withered tree is kept in your past trees, so the season you had is remembered. It's a forgiving streak, not a guilt trip." } }
     ]
   }
   </script>
@@ -76,24 +76,23 @@
     </section>
 
     <section class="prose">
-      <h2>What devo does when you miss a day: the tree falls, it doesn&rsquo;t vanish</h2>
-      <p>In devo your streak is a little tree that grows on the days you and your friends show up. Miss one day, it&rsquo;s fine. Miss two in a row and the tree falls. It doesn&rsquo;t disappear to zero like every other app. It gets planted in your past trees, so the season you had is remembered, not erased. It&rsquo;s a forgiving streak, built on the same <a href="/post-first-devotionals.html">post-first devotional</a> idea: you post your own reflection first, then you read your friends&rsquo;.</p>
+      <h2>What devo does when you miss a day: the tree withers, it doesn&rsquo;t vanish</h2>
+      <p>In devo your streak is a little tree that grows on the days you and your friends show up. Miss one day, it&rsquo;s fine. Miss two in a row and the tree withers. It doesn&rsquo;t disappear to zero. It gets planted in your past trees, so the season you had is remembered, not erased. It&rsquo;s a forgiving streak, built on the same <a href="/post-first-devotionals.html">post-first devotional</a> idea: you post your own reflection first, then you read your friends&rsquo;.</p>
     </section>
 
     <section class="prose">
       <h2>Common questions</h2>
       <p><strong>How do you keep a Bible reading streak without guilt?</strong><br>Use a never-miss-twice rule: one missed day is fine, you just don't miss two in a row. The guilt usually comes from a reset-to-zero, which is what actually makes people quit. A forgiving streak you share with friends is far easier to keep than a solo one.</p>
       <p><strong>What is the never-miss-twice rule?</strong><br>Never miss twice means a single off day doesn't break you, but missing two days in a row does. It builds in slack for real life while still keeping you honest.</p>
-      <p><strong>What happens if you miss a day on devo?</strong><br>One missed day is fine and your tree keeps growing. Miss two in a row and the tree falls, but it doesn't vanish to zero. The old tree is kept in your past trees, so the season you had is remembered. It's a forgiving streak, not a guilt trip.</p>
+      <p><strong>What happens if you miss a day on devo?</strong><br>One missed day is fine and your tree keeps growing. Miss two in a row and the tree withers, but it doesn't vanish to zero. The withered tree is kept in your past trees, so the season you had is remembered. It's a forgiving streak, not a guilt trip.</p>
     </section>
 
     <section class="final">
       <h2>Start a forgiving streak with your friends.</h2>
       <div class="cta">
-        <a class="app-store" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360" aria-label="Get devo on the App Store">Get devo on the App Store</a>
-        <a class="google-play" href="https://play.google.com/store/apps/details?id=com.morningdewll.devo" aria-label="Get devo on Google Play">Get devo on Google Play</a>
+        <a class="btn-primary js-store-link" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo</a>
       </div>
-      <p class="cta-note">devo is free on iOS and Android. More: <a href="/read-the-bible-with-friends.html">reading the Bible with friends</a> &middot; <a href="/faq.html">what happens if I miss a day</a>.</p>
+      <p class="cta-note">Free on iOS and Android &middot; <a href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">App&nbsp;Store</a> &middot; <a href="https://play.google.com/store/apps/details?id=com.morningdewll.devo">Google&nbsp;Play</a>. More: <a href="/read-the-bible-with-friends.html">reading the Bible with friends</a> &middot; <a href="/faq.html">what happens if I miss a day</a>.</p>
     </section>
 
   </main>
@@ -109,5 +108,15 @@
     </div>
     <div class="legal" style="margin-top: 12px; color: var(--ember); opacity: 0.7;">&copy; 2026 devo</div>
   </footer>
+  <script>
+    // Point the primary CTA at the visitor's own store. No redirects.
+    (function () {
+      if (!/Android/.test(navigator.userAgent || '')) return;
+      var links = document.querySelectorAll('.js-store-link');
+      for (var i = 0; i < links.length; i++) {
+        links[i].href = 'https://play.google.com/store/apps/details?id=com.morningdewll.devo';
+      }
+    })();
+  </script>
 </body>
 </html>
