@@ -6,6 +6,7 @@
   <title>devo — Bible reflection with the people who matter</title>
   <meta name="description" content="A small daily Bible journal shared with your closest friends. Write your reflection first. Then your friends' show up. Free on iOS and Android.">
   <meta name="theme-color" content="#FAF7F2">
+  <meta name="apple-itunes-app" content="app-id=6768868360">
   <link rel="stylesheet" href="style.css">
 
   <!-- Open Graph / preview -->
@@ -137,15 +138,21 @@
   </footer>
 
     <script>
-      // Capture per-person ref into localStorage for the re-tap path; redirect
-      // iOS visitors directly to the App Store, Android visitors to Google Play.
-      // Desktop visitors see the page as-is.
+      // Capture per-person ref into localStorage for the re-tap path.
+      // Store redirect fires ONLY on invite links (?ref=...): a bare visit to
+      // devo.fyi must render the page — Googlebot smartphone's UA contains
+      // "Android", so an unconditional mobile redirect makes the homepage
+      // index as a redirect to the Play Store (and bounces every human
+      // mobile visitor before they see anything).
       (function () {
+        var ref = null;
         try {
           var params = new URLSearchParams(window.location.search);
-          var ref = params.get('ref');
+          ref = params.get('ref');
           if (ref && ref.length > 0 && ref.length <= 64) {
             window.localStorage.setItem('devo_pending_signup_ref', ref);
+          } else {
+            ref = null;
           }
         } catch (e) {
           // localStorage unavailable (private mode, etc.) — ignore.
@@ -154,9 +161,9 @@
         var ua = navigator.userAgent || '';
         var isIOS = /iPhone|iPad|iPod/.test(ua) && !/Windows/.test(ua);
         var isAndroid = /Android/.test(ua);
-        if (isIOS) {
+        if (ref && isIOS) {
           window.location.replace('https://apps.apple.com/us/app/devo-quiet-time/id6768868360');
-        } else if (isAndroid) {
+        } else if (ref && isAndroid) {
           window.location.replace('https://play.google.com/store/apps/details?id=com.morningdewll.devo');
         }
       })();
