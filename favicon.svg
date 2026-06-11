@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#FAF7F2"/>
-  <!-- sapling: the devo tree, simplified to read at 16px -->
-  <path d="M32 52 V26" stroke="#2A2520" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <path d="M32 34 C32 26 24 22 17 23 C18 31 25 35 32 34 Z" fill="#5C6B52"/>
-  <path d="M32 27 C32 19 40 15 47 16 C46 24 39 28 32 27 Z" fill="#C08A3E"/>
-  <path d="M22 52 H42" stroke="#2A2520" stroke-width="4" stroke-linecap="round" fill="none"/>
-</svg>
