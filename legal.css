@@ -36,7 +36,7 @@ header.site a {
   font-weight: 600;
 }
 header.site a.brand {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Fraunces', Georgia, serif;
   font-size: 20px;
 }
 header.site nav a {
@@ -48,13 +48,13 @@ header.site nav a {
 header.site nav a:hover { color: var(--gold); }
 
 h1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Fraunces', Georgia, serif;
   font-size: 32px;
   margin: 0 0 8px;
   color: var(--ink);
 }
 h2 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Fraunces', Georgia, serif;
   font-size: 22px;
   margin: 32px 0 12px;
   color: var(--ink);
