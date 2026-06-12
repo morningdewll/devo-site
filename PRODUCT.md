@@ -46,8 +46,9 @@ Warm, quiet, honest. Morning light, not neon. A notebook on a desk, not a feed.
 latin subset, wght 400-600 only; no real 700 -- browser clamps). No additional webfont
 weight may be added without a full Lighthouse re-check.
 
-**Token source:** `tokens.css` is the single token source. `legal.css` and `style.css`
-consume vars; neither may redeclare raw hex.
+**Token source:** `tokens.css` is the single token source. `legal.css` is hex-free;
+`style.css` carries two legacy one-off hexes (locked-card #F2E9D7, blur-line #E5D9C4,
+both plan-specified scene colors). No NEW raw hex outside tokens.css.
 
 **Sacred surfaces (never touch without explicit sign-off):**
 - Inline referral + group-code `<script>` in `index.html` (Googlebot UA guard is

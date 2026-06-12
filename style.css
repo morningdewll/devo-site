@@ -214,6 +214,7 @@ footer.site a {
 }
 footer.site a:hover { color: var(--gold-text); }
 footer.site .legal { margin-top: 4px; font-size: 13px; }
+footer.site .stores { margin-bottom: 8px; } /* p default bottom margin breaks the footer's 8px rhythm */
 
 /* ─── New sections (site-pass 2026-06-10) ─────────────────────────────── */
 .skip {
