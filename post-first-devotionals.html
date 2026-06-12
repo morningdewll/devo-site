@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What Is a Post-First Devotional? | devo</title>
   <meta name="description" content="A post-first devotional is one you can&rsquo;t lurk on. Post your own reflection first, then your friends&rsquo; unlock. devo: read the Bible with your closest friends. Free.">
-  <meta name="theme-color" content="#FAF7F2">
+  <meta name="theme-color" content="#FBF6EE">
+  <link rel="preload" href="assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://devo.fyi/post-first-devotionals.html">
 
@@ -14,18 +16,6 @@
   <meta property="og:description" content="A post-first devotional is one you can&rsquo;t lurk on. Post your own reflection first, then your friends&rsquo; unlock. Read the Bible with your closest friends. Free.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://devo.fyi/post-first-devotionals.html">
-
-  <!-- Scoped prose styles (uses the site's brand vars; mirrors style.css dividers + Georgia headings) -->
-  <style>
-    .prose { padding: 48px 0; border-top: 1px solid var(--taupe); }
-    .prose h2 { font-family: Georgia, "Times New Roman", serif; font-size: 26px; margin: 0 0 16px; color: var(--ink); }
-    .prose p { color: var(--ink); margin: 0 0 14px; }
-    .prose p:last-child { margin-bottom: 0; }
-    .prose .answer { font-size: 19px; }
-    .final { text-align: center; padding: 48px 0 0; border-top: 1px solid var(--taupe); }
-    .final h2 { font-family: Georgia, "Times New Roman", serif; font-size: 26px; margin: 0 0 20px; color: var(--ink); }
-    @media (max-width: 600px) { .prose h2, .final h2 { font-size: 23px; } }
-  </style>
 
   <script type="application/ld+json">
   {
@@ -119,10 +109,10 @@
     </section>
 
     <section class="prose">
-      <p class="answer">A post-first devotional is one you can&rsquo;t lurk on. You read today&rsquo;s verse and write your own reflection first. That unlocks your friends&rsquo;. No posting, no peeking. devo is the free app built on it: read the Bible with your closest friends, write before you read, and grow it together.</p>
+      <div class="pull-card" style="--tilt:-1deg"><p class="answer">A post-first devotional is one you can&rsquo;t lurk on. You read today&rsquo;s verse and write your own reflection first. That unlocks your friends&rsquo;. No posting, no peeking. devo is the free app built on it: read the Bible with your closest friends, write before you read, and grow it together.</p></div>
     </section>
 
-    <section class="how">
+    <section class="how-steps">
       <h2>How a post-first devotional works</h2>
       <ol class="steps">
         <li>
@@ -157,17 +147,17 @@
       <h2>Made for friends, not followers</h2>
       <div class="lane-points">
         <div class="lane-point">
-          <div class="lane-icon">&#10003;</div>
+          <div class="lane-icon"><svg class="check" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 11 C 6 14, 7 15, 8.5 16 C 11 11, 14 6, 17.5 3.5" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></div>
           <h3>Your close friends</h3>
           <p>People you actually know. No strangers, no follower count, no algorithm.</p>
         </div>
         <div class="lane-point">
-          <div class="lane-icon">&#10003;</div>
+          <div class="lane-icon"><svg class="check" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 11 C 6 14, 7 15, 8.5 16 C 11 11, 14 6, 17.5 3.5" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></div>
           <h3>Post to unlock</h3>
           <p>Write before you read. Your friends&rsquo; reflections show up only after yours does.</p>
         </div>
         <div class="lane-point">
-          <div class="lane-icon">&#10003;</div>
+          <div class="lane-icon"><svg class="check" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 11 C 6 14, 7 15, 8.5 16 C 11 11, 14 6, 17.5 3.5" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></div>
           <h3>Free to use</h3>
           <p>No paywall. No subscription. No ads. Just the practice.</p>
         </div>

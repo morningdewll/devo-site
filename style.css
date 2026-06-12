@@ -1,13 +1,7 @@
-:root {
-  --cream: #FAF7F2;
-  --parchment: #F2EAD8;
-  --ink: #2A2520;
-  --ember: #6B6560;
-  --taupe: #B8B0A4;
-  --gold: #C08A3E;
-  --gold-dark: #8A5E22; /* link gold: 5.3:1 on cream, 4.7:1 on parchment (AA); --gold is 2.8:1, bg-only */
-  --sage: #5C6B52;
-}
+h1, h2, h3, .wordmark { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.02em; text-wrap: balance; }
+.hook, .verse-ref { font-family: 'Fraunces', Georgia, serif; font-style: italic; }
+.annotation { font-family: 'Caveat', cursive; color: var(--gold-text); }
+.annotation--sage { color: var(--sage); }
 
 * { box-sizing: border-box; }
 
@@ -22,15 +16,22 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--gold-dark); text-decoration: none; }
+a { color: var(--gold-text); text-decoration: none; }
 a:hover { color: var(--sage); }
-a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 
 main {
   max-width: 760px;
   margin: 0 auto;
   padding: 64px 24px 96px;
 }
+
+/* Band mechanism (homepage only): body.home unconstrains main so section
+   bands (.how, .tree-section) bleed edge-to-edge; each section's content
+   re-centers at 760px via .wrap. Cluster pages have no body.home class and
+   keep the plain 760px main above, rendering exactly as before. */
+body.home main { max-width: none; padding: 64px 0 96px; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 
 /* ─── Brand mark in upper-left ─────────────────────────────────────────── */
 header.site {
@@ -43,6 +44,8 @@ header.site .inner {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  flex-wrap: wrap; /* faq/support carry 5-6 nav links; lets the row wrap at 390 */
+  row-gap: 4px;
 }
 header.site nav a {
   margin-left: 18px;
@@ -54,26 +57,25 @@ header.site nav a {
 }
 header.site nav a:hover { color: var(--ink); }
 header.site .brand {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 0.5px;
   color: var(--ink);
 }
 
-/* ─── Hero ─────────────────────────────────────────────────────────────── */
-section.hero { text-align: center; padding-top: 16px; padding-bottom: 56px; }
-section.hero .wordmark,
-section.hero h1 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 56px;
-  letter-spacing: 1px;
+/* ─── Legacy hero (inner pages only; homepage hero is the .dawn morning
+       desk below — main-scoped so the two never collide) ───────────────── */
+main section.hero { text-align: center; padding-top: 16px; padding-bottom: 56px; }
+main section.hero h1 {
+  /* retuned for Fraunces (Task 7): old 56px/1px/600 was sized for system Georgia */
+  font-size: clamp(36px, 5vw, 48px);
+  letter-spacing: -0.02em;
   margin: 0 0 8px;
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 400;
 }
-section.hero .tagline,
-section.hero h1.tagline {
+main section.hero .tagline,
+main section.hero h1.tagline {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 22px;
   letter-spacing: 0;
@@ -81,11 +83,9 @@ section.hero h1.tagline {
   margin: 0 0 28px;
   font-weight: 500;
 }
-section.hero .hook {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
+main section.hero .hook {
   font-size: 19px;
-  color: var(--sage);
+  color: var(--sage); /* sage 5.30:1 AA on cream; sage-soft fails (3.38:1) — same fix as the dawn hook */
   max-width: 480px;
   margin: 0 auto 40px;
 }
@@ -98,35 +98,15 @@ section.hero .hook {
   flex-wrap: wrap;
   margin-top: 8px;
 }
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--gold);
-  color: var(--ink);
-  padding: 16px 48px;
-  border-radius: 14px;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  transition: transform 0.15s ease, filter 0.15s ease;
-}
-.btn-primary:hover {
-  color: var(--ink);
-  transform: translateY(-1px);
-  filter: brightness(0.95);
-}
-.cta-note {
-  font-size: 13px;
-  color: var(--ember);
-  margin-top: 18px;
-  text-align: center;
-}
+.btn-primary { background: var(--gold-rich); color: var(--ink); font-weight: 600; border-radius: 999px;
+  padding: 13px 30px; text-decoration: none; display: inline-block; transition: transform .2s, box-shadow .2s; }
+.btn-primary:hover { color: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(74,63,48,.18); }
+.cta-note { font-size: 13px; color: var(--ember-small); }
 
-/* ─── How it works ─────────────────────────────────────────────────────── */
-section.how { padding: 48px 0; border-top: 1px solid var(--taupe); }
-section.how h2 {
-  font-family: Georgia, "Times New Roman", serif;
+/* ─── How it works, numbered steps (cluster pages; renamed how → how-steps
+       2026-06-11 so the homepage's new .how band never collides) ────────── */
+section.how-steps { padding: 48px 0; border-top: 1px solid var(--taupe); }
+section.how-steps h2 {
   font-size: 28px;
   margin: 0 0 28px;
   color: var(--ink);
@@ -162,7 +142,6 @@ section.how h2 {
   justify-content: center;
   font-weight: 700;
   font-size: 14px;
-  font-family: Georgia, serif;
 }
 .steps li .step-title {
   font-weight: 600;
@@ -172,14 +151,13 @@ section.how h2 {
 }
 .steps li .step-body {
   font-size: 15px;
-  color: var(--ember);
+  color: var(--ember-small); /* 15px on parchment li: ember fails AA */
   line-height: 1.5;
 }
 
 /* ─── What makes devo lane ─────────────────────────────────────────────── */
 section.lane { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
 section.lane h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 28px;
   color: var(--ink);
@@ -201,8 +179,8 @@ section.lane h2 {
   font-size: 28px;
   margin-bottom: 12px;
   color: var(--gold);
-  font-family: Georgia, serif;
 }
+.lane-icon .check { width: 22px; height: 22px; } /* lane scale for the shared hand-drawn check */
 .lane-point h3 {
   font-size: 16px;
   margin: 0 0 8px;
@@ -220,24 +198,24 @@ footer.site {
   border-top: 1px solid var(--taupe);
   padding: 32px 24px;
   text-align: center;
-  color: var(--ember);
+  color: var(--ember-small); /* ember fails AA on parchment (4.25:1); ember-small 5.08:1 */
   font-size: 13px;
   background: var(--parchment);
 }
 footer.site .brand {
-  font-family: Georgia, serif;
   font-weight: 600;
   color: var(--ink);
 }
 footer.site a {
-  color: var(--ember);
+  color: var(--ember-small);
   display: inline-block;
   padding: 8px 10px;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-footer.site a:hover { color: var(--gold-dark); }
+footer.site a:hover { color: var(--gold-text); }
 footer.site .legal { margin-top: 4px; font-size: 13px; }
+footer.site .stores { margin-bottom: 8px; } /* p default bottom margin breaks the footer's 8px rhythm */
 
 /* ─── New sections (site-pass 2026-06-10) ─────────────────────────────── */
 .skip {
@@ -254,24 +232,11 @@ footer.site .legal { margin-top: 4px; font-size: 13px; }
 
 section.why { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
 section.why h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 28px;
   color: var(--ink);
 }
-.why-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: left;
-}
-.why-card { background: var(--parchment); border-radius: 14px; padding: 22px 24px; }
-.why-card h3 { font-size: 16px; margin: 0 0 8px; color: var(--ink); }
-.why-card p { font-size: 15px; color: var(--ember); margin: 0; line-height: 1.55; }
 .definition {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 19px;
   line-height: 1.6;
   color: var(--ink);
@@ -279,44 +244,32 @@ section.why h2 {
   margin: 36px auto 0;
 }
 
-.tree-band { margin: 40px auto 0; text-align: center; }
-.tree-band img { max-width: 360px; width: 100%; height: auto; }
-.tree-band figcaption {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-size: 15px;
-  color: var(--ember);
-  margin-top: 10px;
-}
-
 section.faq-home { padding: 48px 0; border-top: 1px solid var(--taupe); }
 section.faq-home h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 24px;
   color: var(--ink);
   text-align: center;
 }
-.faq-list { max-width: 640px; margin: 0 auto; }
-.faq-list dt { font-weight: 600; color: var(--ink); font-size: 17px; margin: 22px 0 6px; }
-.faq-list dt:first-of-type { margin-top: 0; }
-.faq-list dd { margin: 0; color: var(--ember); font-size: 15px; line-height: 1.6; }
+.faq-item { border-bottom: 1px solid var(--taupe); }
+.faq-item summary { font-family: 'Fraunces', Georgia, serif; font-size: 17.5px; color: var(--ink); padding: 14px 4px; cursor: pointer; }
+.faq-item summary:hover { color: var(--gold-text); }
+.faq-item p { color: var(--ember-small); font-size: 15px; line-height: 1.6; margin: 0 0 16px; padding: 0 4px; }
 .faq-more { text-align: center; margin: 28px 0 0; }
 
 section.learn { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
 section.learn h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 20px;
   color: var(--ink);
 }
-.learn-links { list-style: none; padding: 0; margin: 0 auto; max-width: 460px; }
-.learn-links a { display: block; padding: 12px 16px; border-radius: 10px; font-size: 16px; }
-.learn-links a:hover { background: var(--parchment); color: var(--gold-dark); }
+/* paper-chip treatment (reuses the .chip look from the how band) */
+.learn-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: none; }
+.learn-links a { display: inline-block; background: var(--paper); border-radius: 12px; box-shadow: var(--shadow-card); padding: 9px 13px; font-size: 15px; transform: rotate(var(--tilt, 0deg)); transition: transform .2s; }
+.learn-links a:hover { transform: rotate(0deg); }
 
 section.final { text-align: center; padding: 56px 0 8px; border-top: 1px solid var(--taupe); }
 section.final h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 24px;
   color: var(--ink);
@@ -325,9 +278,77 @@ section.final h2 {
 footer.site .copyright { margin-top: 8px; }
 
 /* in-text links: underline so color isn't the only distinguishing signal (WCAG 1.4.1) */
-.cta-note a, .prose a, .step-body a, .lane-point p a, .why-card p a, .faq-list dd a {
+.cta-note a, .prose a, .step-body a, .lane-point p a, .paper-note p a, .faq-item p a {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* ─── Paper notes (failure modes) + different-passages how-it-works ─────── */
+/* .paper-note = chrome only (bg/radius/shadow/tilt/padding). Typography is
+   scoped per context (.notes-row, .unlock-stack) so a bare .paper-note wrap
+   never restyles its content. */
+.paper-note { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 20px; transform: rotate(var(--tilt, 0deg)); }
+.notes-row { display: flex; gap: 20px; text-align: left; } /* left: section.why centers */
+.notes-row .paper-note { flex: 1; }
+.notes-row .paper-note h3 { font-size: 19px; margin: 0 0 6px; }
+.notes-row .paper-note p { font-size: 14.5px; line-height: 1.55; color: var(--ember-small); margin: 0; }
+@media (max-width: 600px) { .notes-row { flex-direction: column; } }
+
+.how { padding: 56px 0; background: linear-gradient(180deg, var(--cream), var(--parchment)); }
+.how h2 { font-size: clamp(26px, 3.4vw, 34px); margin: 0; }
+.how-sub { color: var(--ember-small); font-size: 15px; margin: 8px 0 24px; }
+.how-flow { display: flex; gap: 22px; align-items: flex-start; }
+.passage-chips { flex: 1.3; }
+.chip { display: inline-block; background: var(--paper); border-radius: 12px; padding: 9px 13px; box-shadow: var(--shadow-card); transform: rotate(var(--tilt, 0deg)); margin: 0 6px 10px 0; }
+.chip b { font-size: 11.5px; color: var(--ember-small); display: block; }
+.chip .verse-ref { font-size: 13.5px; }
+.chip--you { border-left: 4px solid var(--gold); }
+.flow-arrow { font-size: 21px; white-space: nowrap; align-self: center; }
+.arrow-v { display: none; } /* horizontal arrow by default; swaps to ↓ when .how-flow stacks */
+.unlock-stack { flex: 1; }
+.unlock-stack b { font-size: 12px; color: var(--gold-text); }
+.unlock-stack .annotation { margin: 10px 0 6px; text-align: center; }
+.unlock-stack .paper-note p { font-size: 13px; color: var(--ink); margin: 6px 0 0; } /* paper-note-scoped so the sage annotation keeps its color + size */
+@media (max-width: 760px) {
+  .how-flow { flex-direction: column; }
+  .flow-arrow { align-self: flex-start; }
+  .arrow-h { display: none; }
+  .arrow-v { display: inline; }
+}
+
+/* ─── Tree section (real generated fig tree, day 8) ─────────────────────── */
+.tree-section { padding: 56px 0; }
+.tree-wrap { display: flex; align-items: center; gap: 38px; }
+.tree-wrap img { width: 250px; height: auto; flex-shrink: 0; }
+.tree-copy h2 { font-size: clamp(24px, 3vw, 30px); margin: 0; }
+.tree-copy p { color: var(--ember-small); font-size: 15px; line-height: 1.6; max-width: 36ch; margin: 10px 0 0; }
+.tree-copy .annotation { font-size: 22px; margin-top: 12px; }
+@media (max-width: 600px) {
+  .tree-wrap { flex-direction: column; text-align: center; }
+  .tree-copy p { margin-inline: auto; }
+}
+
+/* ─── Conviction band + honest facts (replace .lane on the homepage;
+       .lane* CSS stays — post-first-devotionals.html still uses it) ─────── */
+.band { background: var(--parchment); border-top: 1px solid var(--taupe); border-bottom: 1px solid var(--taupe); }
+.band-inner { padding-top: 44px; padding-bottom: 44px; }
+.band-inner h2 { font-size: clamp(24px, 3vw, 30px); margin: 0; border-left: 6px solid var(--gold); padding-left: 22px; }
+.band-inner p { color: var(--ember-small); font-size: 15px; line-height: 1.6; max-width: 52ch; margin: 10px 0 0 28px; }
+
+.facts { padding: 30px 0; }
+.facts-row { display: flex; gap: 26px; flex-wrap: wrap; font-size: 14.5px; color: var(--ink); list-style: none; padding: 0; margin: 0; }
+.fact { display: inline-flex; align-items: center; gap: 7px; }
+/* color lives on .check (not .fact) so currentColor tints only the icon —
+   the fact text keeps --ink from .facts-row */
+.check { width: 15px; height: 15px; flex-shrink: 0; color: var(--gold-text); }
+
+/* ─── Ticket CTA (homepage final; section.final base rules stay for the
+       cluster pages — .ticket selectors out-rank them where they collide) ── */
+.ticket { border: 2px dashed var(--gold); border-radius: 14px; background: var(--paper); display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 26px; text-align: left; }
+section.final .ticket h2 { font-size: 22px; margin: 0; }
+section.final .ticket p { color: var(--ember-small); font-size: 13.5px; margin: 4px 0 0; }
+@media (max-width: 600px) {
+  .ticket { flex-direction: column; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -339,16 +360,93 @@ footer.site .copyright { margin-top: 8px; }
   .lane-points { grid-template-columns: 1fr; max-width: 480px; }
 }
 
+/* ─── Morning Desk hero (homepage) ─────────────────────────────────────────
+   .dawn wraps topbar + hero so both share the dawn gradient + beam (the
+   reference puts the lockup inside the gradient band). Hero rules are
+   .dawn-scoped because inner pages still use the legacy section.hero. */
+.dawn { position: relative; overflow: hidden;
+  background: linear-gradient(160deg, var(--cream) 0%, #F5ECDA 55%, #EFE2C8 100%); }
+.dawn::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(118deg, rgba(255,248,230,.85) 0%, rgba(255,248,230,0) 45%); }
+.topbar { padding: 22px clamp(20px,6vw,72px) 0; position: relative; z-index: 2; }
+.lockup { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+.mark { width: 26px; height: 26px; }
+.wordmark { font-size: 19px; font-weight: 600; color: var(--gold-text); }
+.dawn .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px;
+  padding: 48px clamp(20px, 6vw, 72px) 72px; }
+.dawn .hero > * { position: relative; }
+.dawn .hero h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.08; color: var(--ink); font-weight: 400; margin: 0; }
+.dawn .hook { color: var(--sage); font-size: clamp(18px, 2.2vw, 22px); margin: 14px 0 0; } /* --sage 5.30:1 AA; sage-soft fails contrast. Scoped: cluster heroes own their .hook via main section.hero */
+.hero-sub { font-size: 16px; color: var(--ember-small); line-height: 1.6; margin: 14px 0 0; max-width: 40ch; } /* ember-small: AA holds across all dawn gradient stops */
+.hero-cta { margin: 24px 0 0; display: flex; align-items: center; gap: 14px; }
+/* --tilt default -2.5deg = the hero unlocked card's tilt (locked card overrides to 2deg). Intentional; do not zero. */
+.qt-card { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 20px;
+  transform: rotate(var(--tilt, -2.5deg)); transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s; }
+.qt-card--unlocked { border-left: 6px solid var(--gold); width: 84%; z-index: 2; position: relative; }
+.qt-card--locked { background: #F2E9D7; width: 74%; margin: -16px 0 0 auto; --tilt: 2deg; position: relative; }
+.qt-card:hover { transform: rotate(0deg); box-shadow: var(--shadow-card-lift); }
+.qt-author { font-weight: 600; font-size: 13px; color: var(--gold-text); margin: 0; }
+.verse-ref { font-size: 13px; color: var(--gold-text); margin: 0; }
+.qt-body { font-size: 14.5px; line-height: 1.55; color: var(--ink); margin: 6px 0 0; }
+.qt-react { display: inline-block; margin-top: 9px; font-size: 11.5px; color: var(--gold-text);
+  background: rgba(210,154,71,.14); border-radius: 999px; padding: 3px 10px; }
+.lock-chip { position: absolute; top: -10px; right: 14px; background: var(--ink); color: var(--cream);
+  border-radius: 999px; padding: 4px 10px; font-size: 10.5px; }
+.qt-blur { filter: blur(4px); opacity: .6; }
+.blur-line { height: 8px; background: #E5D9C4; border-radius: 4px; margin-top: 7px; }
+.coffee-ring { position: absolute; top: -4px; right: 12px; width: 84px; height: 84px; border-radius: 50%;
+  border: 9px solid rgba(122,110,96,.10); filter: blur(1.5px); }
+.hero-note { font-size: 24px; text-align: right; margin: 12px 0 0; transform: rotate(-1deg); }
+@media (max-width: 760px) { .dawn .hero { grid-template-columns: 1fr; padding-bottom: 56px; } }
+
+/* ─── Cluster pages (Task 7, 2026-06-12) ─────────────────────────────────
+   Shared scaffold for the 8 SEO cluster pages + faq/support, replacing the
+   per-page <style> blocks (and legal.css on faq/support — privacy/terms/
+   delete-account keep legal.css). Headings take Fraunces from the global
+   h1/h2/h3 rule; nothing here may re-declare a font-family. */
+.prose { padding: 48px 0; border-top: 1px solid var(--taupe); }
+.prose > * { max-width: 68ch; } /* reading measure inside the 760px main; border-top stays full width so dividers align with how-steps/lane */
+.prose h2 { font-size: 26px; margin: 0 0 16px; color: var(--ink); }
+.prose p { color: var(--ink); margin: 0 0 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose .answer { font-size: 19px; }
+.prose ul:not(.compare) { color: var(--ink); padding-left: 20px; margin: 0 0 14px; } /* ported: read-the-bible-with-friends weekly-rhythm list. :not(.compare) — merged sheet made the generic rule beat .compare's reset (T7 review) */
+.prose ul:not(.compare) li { margin-bottom: 6px; }
+/* ported from christian-bereal: BeReal comparison list + affiliation fine print */
+.compare { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 12px; }
+.compare li { background: var(--parchment); border-radius: 14px; padding: 16px 18px; }
+.compare .b { color: var(--ember-small); font-size: 15px; } /* ember-small 5.08:1 on parchment; ember fails AA (4.25:1) */
+.compare .d { color: var(--ink); font-weight: 600; margin-top: 2px; }
+.fine { font-size: 13px; color: var(--ember-small); } /* token doctrine: ember-small <18px */
+/* desk accent: paper-note chrome reuse (chrome only — prose typography inherits;
+   new class so .paper-note context rules never apply) */
+.pull-card { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 22px; transform: rotate(var(--tilt, -1deg)); margin: 28px 0; }
+/* utility pages (faq/support, moved off legal.css): bare h1/h2/hr as direct
+   children of main + the two legal.css classes their markup uses. Cluster
+   pages keep all content inside sections, so these never hit them. */
+main > h1 { font-size: 32px; margin: 0 0 8px; color: var(--ink); }
+main > h2 { font-size: 22px; margin: 32px 0 12px; color: var(--ink); }
+main > hr { border: 0; border-top: 1px solid var(--taupe); margin: 32px 0; }
+.meta { color: var(--ember-small); font-size: 14px; margin-bottom: 24px; }
+.tldr { background: var(--parchment); border-left: 4px solid var(--gold); padding: 16px 20px; border-radius: 6px; margin: 24px 0; }
+main > p a, main > ul a, main > ol a { text-decoration: underline; text-underline-offset: 3px; } /* WCAG 1.4.1 parity with .prose a */
+main > ul, main > ol { padding-left: 24px; } /* legal.css indent parity for faq/support body lists */
+@media (max-width: 600px) {
+  .prose h2 { font-size: 23px; }
+  main > h1 { font-size: 26px; }
+  main > h2 { font-size: 19px; }
+}
+
 /* ─── Mobile ───────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   main { padding: 40px 18px 72px; }
-  section.hero .wordmark, section.hero h1 { font-size: 44px; }
-  section.hero .tagline, section.hero h1.tagline { font-size: 19px; }
-  section.hero .hook { font-size: 17px; }
-  section.how h2, section.lane h2, section.why h2, section.faq-home h2,
+  body.home main { padding: 40px 0 72px; }
+  .wrap { padding-left: 18px; padding-right: 18px; }
+  main section.hero .tagline, main section.hero h1.tagline { font-size: 19px; }
+  main section.hero .hook { font-size: 17px; }
+  section.how-steps h2, section.lane h2, section.why h2, section.faq-home h2,
   section.learn h2, section.final h2 { font-size: 23px; }
   .lane-points { grid-template-columns: 1fr; }
-  .why-cards { grid-template-columns: 1fr; }
   .definition { font-size: 17px; }
-  .btn-primary { width: 100%; max-width: 320px; }
+  .cta .btn-primary { width: 100%; max-width: 320px; }
 }
