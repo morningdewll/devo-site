@@ -18,7 +18,7 @@ html, body {
 
 a { color: var(--gold-text); text-decoration: none; }
 a:hover { color: var(--sage); }
-a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 
 main {
   max-width: 760px;
@@ -247,7 +247,7 @@ section.faq-home h2 {
   text-align: center;
 }
 .faq-item { border-bottom: 1px solid var(--taupe); }
-.faq-item summary { font-family: 'Fraunces', Georgia, serif; font-size: 17.5px; color: var(--ink); padding: 14px 4px; cursor: pointer; list-style-position: outside; }
+.faq-item summary { font-family: 'Fraunces', Georgia, serif; font-size: 17.5px; color: var(--ink); padding: 14px 4px; cursor: pointer; }
 .faq-item summary:hover { color: var(--gold-text); }
 .faq-item p { color: var(--ember-small); font-size: 15px; line-height: 1.6; margin: 0 0 16px; padding: 0 4px; }
 .faq-more { text-align: center; margin: 28px 0 0; }
@@ -331,9 +331,11 @@ footer.site .copyright { margin-top: 8px; }
 .band-inner p { color: var(--ember-small); font-size: 15px; line-height: 1.6; max-width: 52ch; margin: 10px 0 0 28px; }
 
 .facts { padding: 30px 0; }
-.facts-row { display: flex; gap: 26px; flex-wrap: wrap; font-size: 14.5px; color: var(--ink); }
+.facts-row { display: flex; gap: 26px; flex-wrap: wrap; font-size: 14.5px; color: var(--ink); list-style: none; padding: 0; margin: 0; }
 .fact { display: inline-flex; align-items: center; gap: 7px; }
-.check { width: 15px; height: 15px; flex-shrink: 0; }
+/* color lives on .check (not .fact) so currentColor tints only the icon —
+   the fact text keeps --ink from .facts-row */
+.check { width: 15px; height: 15px; flex-shrink: 0; color: var(--gold-text); }
 
 /* ─── Ticket CTA (homepage final; section.final base rules stay for the
        cluster pages — .ticket selectors out-rank them where they collide) ── */
