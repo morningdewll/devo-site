@@ -98,12 +98,12 @@ footer.site {
   border-top: 1px solid var(--taupe);
   padding: 24px;
   text-align: center;
-  color: var(--ember);
+  color: var(--ember-small); /* ember fails AA on parchment (4.25:1); ember-small 5.08:1 */
   font-size: 13px;
   background: var(--parchment);
 }
 footer.site a {
-  color: var(--ember);
+  color: var(--ember-small);
   display: inline-block;
   padding: 8px 6px;
   text-decoration: underline;

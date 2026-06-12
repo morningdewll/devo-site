@@ -12,8 +12,7 @@
   --gold: #D29A47;       /* accents, card left border */
   --gold-rich: #D4A937;  /* filled CTA bg, ink text */
   --gold-text: #8A6425;  /* links, wordmark (4.98:1 on cream) */
-  --sage: #5C6B52;       /* annotations (app LEAF green) */
-  --sage-soft: #7B8C66;  /* hook line */
+  --sage: #5C6B52;       /* annotations + hook lines (app LEAF green; 5.30:1 AA on cream) */
   --logo-gold: #C08A3E;  /* mark + tree figs ONLY, never UI */
   --shadow-card: 0 12px 24px rgba(74, 63, 48, .13);
   --shadow-card-lift: 0 16px 30px rgba(74, 63, 48, .17);

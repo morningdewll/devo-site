@@ -47,8 +47,8 @@ latin subset, wght 400-600 only; no real 700 -- browser clamps). No additional w
 weight may be added without a full Lighthouse re-check.
 
 **Token source:** `tokens.css` is the single token source. `legal.css` is hex-free;
-`style.css` carries two legacy one-off hexes (locked-card #F2E9D7, blur-line #E5D9C4,
-both plan-specified scene colors). No NEW raw hex outside tokens.css.
+`style.css` carries four plan-specified scene hexes (dawn gradient stops #F5ECDA and
+#EFE2C8, locked-card #F2E9D7, blur-line #E5D9C4). No NEW raw hex outside tokens.css.
 
 **Sacred surfaces (never touch without explicit sign-off):**
 - Inline referral + group-code `<script>` in `index.html` (Googlebot UA guard is

@@ -151,7 +151,7 @@ section.how-steps h2 {
 }
 .steps li .step-body {
   font-size: 15px;
-  color: var(--ember);
+  color: var(--ember-small); /* 15px on parchment li: ember fails AA */
   line-height: 1.5;
 }
 
@@ -180,6 +180,7 @@ section.lane h2 {
   margin-bottom: 12px;
   color: var(--gold);
 }
+.lane-icon .check { width: 22px; height: 22px; } /* lane scale for the shared hand-drawn check */
 .lane-point h3 {
   font-size: 16px;
   margin: 0 0 8px;
@@ -197,7 +198,7 @@ footer.site {
   border-top: 1px solid var(--taupe);
   padding: 32px 24px;
   text-align: center;
-  color: var(--ember);
+  color: var(--ember-small); /* ember fails AA on parchment (4.25:1); ember-small 5.08:1 */
   font-size: 13px;
   background: var(--parchment);
 }
@@ -206,7 +207,7 @@ footer.site .brand {
   color: var(--ink);
 }
 footer.site a {
-  color: var(--ember);
+  color: var(--ember-small);
   display: inline-block;
   padding: 8px 10px;
   text-decoration: underline;
