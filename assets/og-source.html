@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- Regeneration harness for assets/og-image.png (the Open Graph preview).
+     Serve the REPO ROOT over http (python -m http.server 8123), open
+     http://localhost:8123/assets/og-source.html in Chrome, and capture at
+     exactly 1200x630, devicePixelRatio 1 (CDP: Emulation.setDeviceMetricsOverride
+     1200x630 dsf=1, then Page.captureScreenshot clip 0,0,1200,630 scale=1).
+     Never capture from file:// (zoom/dpr remembered per origin breaks the math).
+     All colors/fonts derive from ../tokens.css; scene language mirrors the
+     live homepage Morning Desk hero (style.css .dawn block). Copy is canon:
+     wordmark, h1, hook, and the hannah card from index.html, nothing else. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>og-image source (1200x630)</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden;
+    -webkit-font-smoothing: antialiased; }
+
+  .canvas { position: relative; width: 1200px; height: 630px; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 56px 64px;
+    background: linear-gradient(160deg, var(--cream) 0%, #F5ECDA 55%, #EFE2C8 100%); }
+  /* dawn light beam, same wash as the live hero (.dawn::before) */
+  .canvas::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(118deg, rgba(255,248,230,.85) 0%, rgba(255,248,230,0) 45%); }
+
+  .left { position: relative; z-index: 1; width: 55%; padding-right: 24px; }
+  .right { position: relative; z-index: 1; width: 45%; }
+
+  .lockup { display: flex; align-items: center; gap: 14px; margin-bottom: 34px; }
+  .mark { width: 52px; height: 52px; }
+  .wordmark { font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+    font-size: 40px; letter-spacing: -0.02em; color: var(--gold-text); }
+
+  h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 400;
+    font-size: 67px; line-height: 1.1; letter-spacing: -0.02em;
+    color: var(--ink); text-wrap: balance; max-width: 11ch; }
+
+  .hook { font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 31px; color: var(--sage); margin-top: 24px; }
+
+  /* hero card pair, scaled up ~1.5x from the on-site .qt-card */
+  .qt-card { background: var(--paper); border-radius: 22px; box-shadow: var(--shadow-card);
+    padding: 27px 30px; }
+  .qt-card--unlocked { border-left: 9px solid var(--gold); width: 365px;
+    transform: rotate(-2.5deg); position: relative; z-index: 2; }
+  .qt-card--locked { background: #F2E9D7; width: 340px; margin: -16px 0 0 auto;
+    transform: rotate(2deg); position: relative; }
+  .qt-author { font-weight: 600; font-size: 19px; color: var(--gold-text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .verse-ref { font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 19px; color: var(--gold-text); margin-top: 2px; }
+  .qt-body { font-size: 20.5px; line-height: 1.5; color: var(--ink); margin-top: 10px;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .qt-react { display: inline-block; margin-top: 14px; font-size: 16px;
+    color: var(--gold-text); background: rgba(210,154,71,.14); border-radius: 999px;
+    padding: 5px 15px;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .lock-chip { position: absolute; top: -16px; right: 20px; background: var(--ink);
+    color: var(--cream); border-radius: 999px; padding: 6px 15px; font-size: 15px;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .qt-blur { filter: blur(6px); opacity: .6; }
+  .blur-line { height: 12px; background: #E5D9C4; border-radius: 6px; margin-top: 11px; }
+  .coffee-ring { position: absolute; top: -52px; right: 6px; width: 124px; height: 124px;
+    border-radius: 50%; border: 13px solid rgba(122,110,96,.10); filter: blur(2px); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="left">
+      <div class="lockup">
+        <svg class="mark" viewBox="160 160 704 704" aria-hidden="true">
+          <path d="M 512 780 Q 498 540, 512 240" stroke="#C08A3E" stroke-width="32" stroke-linecap="round" fill="none"/>
+          <path d="M 522 392 C 580 320, 700 296, 776 320 C 740 400, 620 444, 522 412 Z" fill="#C08A3E"/>
+          <path d="M 502 472 C 444 408, 324 388, 248 412 C 284 488, 404 528, 502 492 Z" fill="#C08A3E"/>
+          <circle cx="512" cy="800" r="64" fill="#C08A3E"/>
+        </svg>
+        <span class="wordmark">devo</span>
+      </div>
+      <h1>Bible reflection with the people who matter.</h1>
+      <p class="hook">post to unlock.</p>
+    </div>
+    <div class="right">
+      <div class="coffee-ring"></div>
+      <article class="qt-card qt-card--unlocked">
+        <p class="qt-author">hannah</p>
+        <p class="verse-ref">Proverbs 27:17</p>
+        <p class="qt-body">In Hebrew, sharpen and together are written with the same letters. I keep trying to grow alone&hellip;</p>
+        <span class="qt-react">Amen 2</span>
+      </article>
+      <article class="qt-card qt-card--locked">
+        <span class="lock-chip"><span aria-hidden="true">&#128274;</span> locked</span>
+        <div class="qt-blur" aria-hidden="true">
+          <p class="qt-author">noah</p>
+          <div class="blur-line" style="width:90%"></div>
+          <div class="blur-line" style="width:72%"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>
