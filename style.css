@@ -44,6 +44,8 @@ header.site .inner {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  flex-wrap: wrap; /* faq/support carry 5-6 nav links; lets the row wrap at 390 */
+  row-gap: 4px;
 }
 header.site nav a {
   margin-left: 18px;
@@ -83,7 +85,7 @@ main section.hero h1.tagline {
 }
 main section.hero .hook {
   font-size: 19px;
-  color: var(--sage-soft);
+  color: var(--sage); /* sage 5.30:1 AA on cream; sage-soft fails (3.38:1) — same fix as the dawn hook */
   max-width: 480px;
   margin: 0 auto 40px;
 }
@@ -406,14 +408,14 @@ section.final .ticket p { color: var(--ember-small); font-size: 13.5px; margin: 
 .prose p { color: var(--ink); margin: 0 0 14px; }
 .prose p:last-child { margin-bottom: 0; }
 .prose .answer { font-size: 19px; }
-.prose ul { color: var(--ink); padding-left: 20px; margin: 0 0 14px; } /* ported: read-the-bible-with-friends weekly-rhythm list */
-.prose li { margin-bottom: 6px; }
+.prose ul:not(.compare) { color: var(--ink); padding-left: 20px; margin: 0 0 14px; } /* ported: read-the-bible-with-friends weekly-rhythm list. :not(.compare) — merged sheet made the generic rule beat .compare's reset (T7 review) */
+.prose ul:not(.compare) li { margin-bottom: 6px; }
 /* ported from christian-bereal: BeReal comparison list + affiliation fine print */
 .compare { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 12px; }
 .compare li { background: var(--parchment); border-radius: 14px; padding: 16px 18px; }
-.compare .b { color: var(--ember); font-size: 15px; }
+.compare .b { color: var(--ember-small); font-size: 15px; } /* ember-small 5.08:1 on parchment; ember fails AA (4.25:1) */
 .compare .d { color: var(--ink); font-weight: 600; margin-top: 2px; }
-.fine { font-size: 13px; color: var(--ember); }
+.fine { font-size: 13px; color: var(--ember-small); } /* token doctrine: ember-small <18px */
 /* desk accent: paper-note chrome reuse (chrome only — prose typography inherits;
    new class so .paper-note context rules never apply) */
 .pull-card { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 22px; transform: rotate(var(--tilt, -1deg)); margin: 28px 0; }
@@ -426,7 +428,7 @@ main > hr { border: 0; border-top: 1px solid var(--taupe); margin: 32px 0; }
 .meta { color: var(--ember-small); font-size: 14px; margin-bottom: 24px; }
 .tldr { background: var(--parchment); border-left: 4px solid var(--gold); padding: 16px 20px; border-radius: 6px; margin: 24px 0; }
 main > p a, main > ul a, main > ol a { text-decoration: underline; text-underline-offset: 3px; } /* WCAG 1.4.1 parity with .prose a */
-header.site .inner { flex-wrap: wrap; row-gap: 4px; } /* faq/support carry 5-6 nav links; lets the row wrap at 390 */
+main > ul, main > ol { padding-left: 24px; } /* legal.css indent parity for faq/support body lists */
 @media (max-width: 600px) {
   .prose h2 { font-size: 23px; }
   main > h1 { font-size: 26px; }
