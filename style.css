@@ -26,6 +26,13 @@ main {
   padding: 64px 24px 96px;
 }
 
+/* Band mechanism (homepage only): body.home unconstrains main so section
+   bands (.how, .tree-section) bleed edge-to-edge; each section's content
+   re-centers at 760px via .wrap. Cluster pages have no body.home class and
+   keep the plain 760px main above, rendering exactly as before. */
+body.home main { max-width: none; padding: 64px 0 96px; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
 /* ─── Brand mark in upper-left ─────────────────────────────────────────── */
 header.site {
   padding: 20px 28px;
@@ -271,13 +278,17 @@ footer.site .copyright { margin-top: 8px; }
 }
 
 /* ─── Paper notes (failure modes) + different-passages how-it-works ─────── */
+/* .paper-note = chrome only (bg/radius/shadow/tilt/padding). Typography is
+   scoped per context (.notes-row, .unlock-stack) so a bare .paper-note wrap
+   never restyles its content. */
 .paper-note { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 20px; transform: rotate(var(--tilt, 0deg)); }
-.paper-note h3 { font-size: 19px; margin: 0 0 6px; }
-.paper-note p { font-size: 14.5px; line-height: 1.55; color: var(--ember-small); margin: 0; }
 .notes-row { display: flex; gap: 20px; text-align: left; } /* left: section.why centers */
+.notes-row .paper-note { flex: 1; }
+.notes-row .paper-note h3 { font-size: 19px; margin: 0 0 6px; }
+.notes-row .paper-note p { font-size: 14.5px; line-height: 1.55; color: var(--ember-small); margin: 0; }
 @media (max-width: 600px) { .notes-row { flex-direction: column; } }
 
-.how { padding: 56px clamp(20px, 6vw, 72px); background: linear-gradient(180deg, var(--cream), var(--parchment)); }
+.how { padding: 56px 0; background: linear-gradient(180deg, var(--cream), var(--parchment)); }
 .how h2 { font-size: clamp(26px, 3.4vw, 34px); margin: 0; }
 .how-sub { color: var(--ember-small); font-size: 15px; margin: 8px 0 24px; }
 .how-flow { display: flex; gap: 22px; align-items: flex-start; }
@@ -287,11 +298,29 @@ footer.site .copyright { margin-top: 8px; }
 .chip .verse-ref { font-size: 13.5px; }
 .chip--you { border-left: 4px solid var(--gold); }
 .flow-arrow { font-size: 21px; white-space: nowrap; align-self: center; }
+.arrow-v { display: none; } /* horizontal arrow by default; swaps to ↓ when .how-flow stacks */
 .unlock-stack { flex: 1; }
 .unlock-stack b { font-size: 12px; color: var(--gold-text); }
 .unlock-stack .annotation { margin: 10px 0 6px; text-align: center; }
 .unlock-stack .paper-note p { font-size: 13px; color: var(--ink); margin: 6px 0 0; } /* paper-note-scoped so the sage annotation keeps its color + size */
-@media (max-width: 760px) { .how-flow { flex-direction: column; } .flow-arrow { align-self: flex-start; } }
+@media (max-width: 760px) {
+  .how-flow { flex-direction: column; }
+  .flow-arrow { align-self: flex-start; }
+  .arrow-h { display: none; }
+  .arrow-v { display: inline; }
+}
+
+/* ─── Tree section (real generated fig tree, day 8) ─────────────────────── */
+.tree-section { padding: 56px 0; }
+.tree-wrap { display: flex; align-items: center; gap: 38px; }
+.tree-wrap img { width: 250px; height: auto; flex-shrink: 0; }
+.tree-copy h2 { font-size: clamp(24px, 3vw, 30px); margin: 0; }
+.tree-copy p { color: var(--ember-small); font-size: 15px; line-height: 1.6; max-width: 36ch; margin: 10px 0 0; }
+.tree-copy .annotation { font-size: 22px; margin-top: 12px; }
+@media (max-width: 600px) {
+  .tree-wrap { flex-direction: column; text-align: center; }
+  .tree-copy p { margin-inline: auto; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -321,6 +350,7 @@ footer.site .copyright { margin-top: 8px; }
 .dawn .hook { color: var(--sage); font-size: clamp(18px, 2.2vw, 22px); margin: 14px 0 0; } /* --sage 5.30:1 AA; sage-soft fails contrast. Scoped: cluster heroes own their .hook via main section.hero */
 .hero-sub { font-size: 16px; color: var(--ember-small); line-height: 1.6; margin: 14px 0 0; max-width: 40ch; } /* ember-small: AA holds across all dawn gradient stops */
 .hero-cta { margin: 24px 0 0; display: flex; align-items: center; gap: 14px; }
+/* --tilt default -2.5deg = the hero unlocked card's tilt (locked card overrides to 2deg). Intentional; do not zero. */
 .qt-card { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 20px;
   transform: rotate(var(--tilt, -2.5deg)); transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s; }
 .qt-card--unlocked { border-left: 6px solid var(--gold); width: 84%; z-index: 2; position: relative; }
@@ -343,6 +373,8 @@ footer.site .copyright { margin-top: 8px; }
 /* ─── Mobile ───────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   main { padding: 40px 18px 72px; }
+  body.home main { padding: 40px 0 72px; }
+  .wrap { padding-left: 18px; padding-right: 18px; }
   main section.hero h1 { font-size: 44px; }
   main section.hero .tagline, main section.hero h1.tagline { font-size: 19px; }
   main section.hero .hook { font-size: 17px; }
