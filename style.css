@@ -1,13 +1,7 @@
-:root {
-  --cream: #FAF7F2;
-  --parchment: #F2EAD8;
-  --ink: #2A2520;
-  --ember: #6B6560;
-  --taupe: #B8B0A4;
-  --gold: #C08A3E;
-  --gold-dark: #8A5E22; /* link gold: 5.3:1 on cream, 4.7:1 on parchment (AA); --gold is 2.8:1, bg-only */
-  --sage: #5C6B52;
-}
+h1, h2, h3, .wordmark { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.02em; text-wrap: balance; }
+.hook, .verse-ref { font-family: 'Fraunces', Georgia, serif; font-style: italic; }
+.annotation { font-family: 'Caveat', cursive; color: var(--gold-text); }
+.annotation--sage { color: var(--sage); }
 
 * { box-sizing: border-box; }
 
@@ -22,7 +16,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--gold-dark); text-decoration: none; }
+a { color: var(--gold-text); text-decoration: none; }
 a:hover { color: var(--sage); }
 a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 
@@ -54,7 +48,6 @@ header.site nav a {
 }
 header.site nav a:hover { color: var(--ink); }
 header.site .brand {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -65,7 +58,6 @@ header.site .brand {
 section.hero { text-align: center; padding-top: 16px; padding-bottom: 56px; }
 section.hero .wordmark,
 section.hero h1 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 56px;
   letter-spacing: 1px;
   margin: 0 0 8px;
@@ -82,10 +74,8 @@ section.hero h1.tagline {
   font-weight: 500;
 }
 section.hero .hook {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
   font-size: 19px;
-  color: var(--sage);
+  color: var(--sage-soft);
   max-width: 480px;
   margin: 0 auto 40px;
 }
@@ -126,7 +116,6 @@ section.hero .hook {
 /* ─── How it works ─────────────────────────────────────────────────────── */
 section.how { padding: 48px 0; border-top: 1px solid var(--taupe); }
 section.how h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 28px;
   margin: 0 0 28px;
   color: var(--ink);
@@ -162,7 +151,6 @@ section.how h2 {
   justify-content: center;
   font-weight: 700;
   font-size: 14px;
-  font-family: Georgia, serif;
 }
 .steps li .step-title {
   font-weight: 600;
@@ -179,7 +167,6 @@ section.how h2 {
 /* ─── What makes devo lane ─────────────────────────────────────────────── */
 section.lane { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
 section.lane h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 28px;
   color: var(--ink);
@@ -201,7 +188,6 @@ section.lane h2 {
   font-size: 28px;
   margin-bottom: 12px;
   color: var(--gold);
-  font-family: Georgia, serif;
 }
 .lane-point h3 {
   font-size: 16px;
@@ -225,7 +211,6 @@ footer.site {
   background: var(--parchment);
 }
 footer.site .brand {
-  font-family: Georgia, serif;
   font-weight: 600;
   color: var(--ink);
 }
@@ -236,7 +221,7 @@ footer.site a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-footer.site a:hover { color: var(--gold-dark); }
+footer.site a:hover { color: var(--gold-text); }
 footer.site .legal { margin-top: 4px; font-size: 13px; }
 
 /* ─── New sections (site-pass 2026-06-10) ─────────────────────────────── */
@@ -254,7 +239,6 @@ footer.site .legal { margin-top: 4px; font-size: 13px; }
 
 section.why { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
 section.why h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 28px;
   color: var(--ink);
@@ -271,7 +255,6 @@ section.why h2 {
 .why-card h3 { font-size: 16px; margin: 0 0 8px; color: var(--ink); }
 .why-card p { font-size: 15px; color: var(--ember); margin: 0; line-height: 1.55; }
 .definition {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 19px;
   line-height: 1.6;
   color: var(--ink);
@@ -282,7 +265,6 @@ section.why h2 {
 .tree-band { margin: 40px auto 0; text-align: center; }
 .tree-band img { max-width: 360px; width: 100%; height: auto; }
 .tree-band figcaption {
-  font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
   font-size: 15px;
   color: var(--ember);
@@ -291,7 +273,6 @@ section.why h2 {
 
 section.faq-home { padding: 48px 0; border-top: 1px solid var(--taupe); }
 section.faq-home h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 24px;
   color: var(--ink);
@@ -305,18 +286,16 @@ section.faq-home h2 {
 
 section.learn { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
 section.learn h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 20px;
   color: var(--ink);
 }
 .learn-links { list-style: none; padding: 0; margin: 0 auto; max-width: 460px; }
 .learn-links a { display: block; padding: 12px 16px; border-radius: 10px; font-size: 16px; }
-.learn-links a:hover { background: var(--parchment); color: var(--gold-dark); }
+.learn-links a:hover { background: var(--parchment); color: var(--gold-text); }
 
 section.final { text-align: center; padding: 56px 0 8px; border-top: 1px solid var(--taupe); }
 section.final h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
   margin: 0 0 24px;
   color: var(--ink);
