@@ -93,9 +93,10 @@ main section.hero .hook {
 .btn-primary:hover { color: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(74,63,48,.18); }
 .cta-note { font-size: 13px; color: var(--ember-small); }
 
-/* ─── How it works ─────────────────────────────────────────────────────── */
-section.how { padding: 48px 0; border-top: 1px solid var(--taupe); }
-section.how h2 {
+/* ─── How it works, numbered steps (cluster pages; renamed how → how-steps
+       2026-06-11 so the homepage's new .how band never collides) ────────── */
+section.how-steps { padding: 48px 0; border-top: 1px solid var(--taupe); }
+section.how-steps h2 {
   font-size: 28px;
   margin: 0 0 28px;
   color: var(--ink);
@@ -223,32 +224,12 @@ section.why h2 {
   margin: 0 0 28px;
   color: var(--ink);
 }
-.why-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: left;
-}
-.why-card { background: var(--parchment); border-radius: 14px; padding: 22px 24px; }
-.why-card h3 { font-size: 16px; margin: 0 0 8px; color: var(--ink); }
-.why-card p { font-size: 15px; color: var(--ember); margin: 0; line-height: 1.55; }
 .definition {
   font-size: 19px;
   line-height: 1.6;
   color: var(--ink);
   max-width: 620px;
   margin: 36px auto 0;
-}
-
-.tree-band { margin: 40px auto 0; text-align: center; }
-.tree-band img { max-width: 360px; width: 100%; height: auto; }
-.tree-band figcaption {
-  font-style: italic;
-  font-size: 15px;
-  color: var(--ember);
-  margin-top: 10px;
 }
 
 section.faq-home { padding: 48px 0; border-top: 1px solid var(--taupe); }
@@ -284,10 +265,33 @@ section.final h2 {
 footer.site .copyright { margin-top: 8px; }
 
 /* in-text links: underline so color isn't the only distinguishing signal (WCAG 1.4.1) */
-.cta-note a, .prose a, .step-body a, .lane-point p a, .why-card p a, .faq-list dd a {
+.cta-note a, .prose a, .step-body a, .lane-point p a, .paper-note p a, .faq-list dd a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* ─── Paper notes (failure modes) + different-passages how-it-works ─────── */
+.paper-note { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 20px; transform: rotate(var(--tilt, 0deg)); }
+.paper-note h3 { font-size: 19px; margin: 0 0 6px; }
+.paper-note p { font-size: 14.5px; line-height: 1.55; color: var(--ember-small); margin: 0; }
+.notes-row { display: flex; gap: 20px; text-align: left; } /* left: section.why centers */
+@media (max-width: 600px) { .notes-row { flex-direction: column; } }
+
+.how { padding: 56px clamp(20px, 6vw, 72px); background: linear-gradient(180deg, var(--cream), var(--parchment)); }
+.how h2 { font-size: clamp(26px, 3.4vw, 34px); margin: 0; }
+.how-sub { color: var(--ember-small); font-size: 15px; margin: 8px 0 24px; }
+.how-flow { display: flex; gap: 22px; align-items: flex-start; }
+.passage-chips { flex: 1.3; }
+.chip { display: inline-block; background: var(--paper); border-radius: 12px; padding: 9px 13px; box-shadow: var(--shadow-card); transform: rotate(var(--tilt, 0deg)); margin: 0 6px 10px 0; }
+.chip b { font-size: 11.5px; color: var(--ember-small); display: block; }
+.chip .verse-ref { font-size: 13.5px; }
+.chip--you { border-left: 4px solid var(--gold); }
+.flow-arrow { font-size: 21px; white-space: nowrap; align-self: center; }
+.unlock-stack { flex: 1; }
+.unlock-stack b { font-size: 12px; color: var(--gold-text); }
+.unlock-stack .annotation { margin: 10px 0 6px; text-align: center; }
+.unlock-stack .paper-note p { font-size: 13px; color: var(--ink); margin: 6px 0 0; } /* paper-note-scoped so the sage annotation keeps its color + size */
+@media (max-width: 760px) { .how-flow { flex-direction: column; } .flow-arrow { align-self: flex-start; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -342,10 +346,9 @@ footer.site .copyright { margin-top: 8px; }
   main section.hero h1 { font-size: 44px; }
   main section.hero .tagline, main section.hero h1.tagline { font-size: 19px; }
   main section.hero .hook { font-size: 17px; }
-  section.how h2, section.lane h2, section.why h2, section.faq-home h2,
+  section.how-steps h2, section.lane h2, section.why h2, section.faq-home h2,
   section.learn h2, section.final h2 { font-size: 23px; }
   .lane-points { grid-template-columns: 1fr; }
-  .why-cards { grid-template-columns: 1fr; }
   .definition { font-size: 17px; }
   .cta .btn-primary { width: 100%; max-width: 320px; }
 }
