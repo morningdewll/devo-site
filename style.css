@@ -246,10 +246,10 @@ section.faq-home h2 {
   color: var(--ink);
   text-align: center;
 }
-.faq-list { max-width: 640px; margin: 0 auto; }
-.faq-list dt { font-weight: 600; color: var(--ink); font-size: 17px; margin: 22px 0 6px; }
-.faq-list dt:first-of-type { margin-top: 0; }
-.faq-list dd { margin: 0; color: var(--ember); font-size: 15px; line-height: 1.6; }
+.faq-item { border-bottom: 1px solid var(--taupe); }
+.faq-item summary { font-family: 'Fraunces', Georgia, serif; font-size: 17.5px; color: var(--ink); padding: 14px 4px; cursor: pointer; list-style-position: outside; }
+.faq-item summary:hover { color: var(--gold-text); }
+.faq-item p { color: var(--ember-small); font-size: 15px; line-height: 1.6; margin: 0 0 16px; padding: 0 4px; }
 .faq-more { text-align: center; margin: 28px 0 0; }
 
 section.learn { padding: 48px 0; border-top: 1px solid var(--taupe); text-align: center; }
@@ -258,9 +258,10 @@ section.learn h2 {
   margin: 0 0 20px;
   color: var(--ink);
 }
-.learn-links { list-style: none; padding: 0; margin: 0 auto; max-width: 460px; }
-.learn-links a { display: block; padding: 12px 16px; border-radius: 10px; font-size: 16px; }
-.learn-links a:hover { background: var(--parchment); color: var(--gold-text); }
+/* paper-chip treatment (reuses the .chip look from the how band) */
+.learn-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: none; }
+.learn-links a { display: inline-block; background: var(--paper); border-radius: 12px; box-shadow: var(--shadow-card); padding: 9px 13px; font-size: 15px; transform: rotate(var(--tilt, 0deg)); transition: transform .2s; }
+.learn-links a:hover { transform: rotate(0deg); }
 
 section.final { text-align: center; padding: 56px 0 8px; border-top: 1px solid var(--taupe); }
 section.final h2 {
@@ -272,7 +273,7 @@ section.final h2 {
 footer.site .copyright { margin-top: 8px; }
 
 /* in-text links: underline so color isn't the only distinguishing signal (WCAG 1.4.1) */
-.cta-note a, .prose a, .step-body a, .lane-point p a, .paper-note p a, .faq-list dd a {
+.cta-note a, .prose a, .step-body a, .lane-point p a, .paper-note p a, .faq-item p a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -320,6 +321,27 @@ footer.site .copyright { margin-top: 8px; }
 @media (max-width: 600px) {
   .tree-wrap { flex-direction: column; text-align: center; }
   .tree-copy p { margin-inline: auto; }
+}
+
+/* ─── Conviction band + honest facts (replace .lane on the homepage;
+       .lane* CSS stays — post-first-devotionals.html still uses it) ─────── */
+.band { background: var(--parchment); border-top: 1px solid var(--taupe); border-bottom: 1px solid var(--taupe); }
+.band-inner { padding-top: 44px; padding-bottom: 44px; }
+.band-inner h2 { font-size: clamp(24px, 3vw, 30px); margin: 0; border-left: 6px solid var(--gold); padding-left: 22px; }
+.band-inner p { color: var(--ember-small); font-size: 15px; line-height: 1.6; max-width: 52ch; margin: 10px 0 0 28px; }
+
+.facts { padding: 30px 0; }
+.facts-row { display: flex; gap: 26px; flex-wrap: wrap; font-size: 14.5px; color: var(--ink); }
+.fact { display: inline-flex; align-items: center; gap: 7px; }
+.check { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* ─── Ticket CTA (homepage final; section.final base rules stay for the
+       cluster pages — .ticket selectors out-rank them where they collide) ── */
+.ticket { border: 2px dashed var(--gold); border-radius: 14px; background: var(--paper); display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 26px; text-align: left; }
+section.final .ticket h2 { font-size: 22px; margin: 0; }
+section.final .ticket p { color: var(--ember-small); font-size: 13.5px; margin: 4px 0 0; }
+@media (max-width: 600px) {
+  .ticket { flex-direction: column; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
