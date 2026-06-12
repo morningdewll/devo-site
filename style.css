@@ -65,11 +65,12 @@ header.site .brand {
        desk below — main-scoped so the two never collide) ───────────────── */
 main section.hero { text-align: center; padding-top: 16px; padding-bottom: 56px; }
 main section.hero h1 {
-  font-size: 56px;
-  letter-spacing: 1px;
+  /* retuned for Fraunces (Task 7): old 56px/1px/600 was sized for system Georgia */
+  font-size: clamp(36px, 5vw, 48px);
+  letter-spacing: -0.02em;
   margin: 0 0 8px;
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 400;
 }
 main section.hero .tagline,
 main section.hero h1.tagline {
@@ -394,12 +395,49 @@ section.final .ticket p { color: var(--ember-small); font-size: 13.5px; margin: 
 .hero-note { font-size: 24px; text-align: right; margin: 12px 0 0; transform: rotate(-1deg); }
 @media (max-width: 760px) { .dawn .hero { grid-template-columns: 1fr; padding-bottom: 56px; } }
 
+/* ─── Cluster pages (Task 7, 2026-06-12) ─────────────────────────────────
+   Shared scaffold for the 8 SEO cluster pages + faq/support, replacing the
+   per-page <style> blocks (and legal.css on faq/support — privacy/terms/
+   delete-account keep legal.css). Headings take Fraunces from the global
+   h1/h2/h3 rule; nothing here may re-declare a font-family. */
+.prose { padding: 48px 0; border-top: 1px solid var(--taupe); }
+.prose > * { max-width: 68ch; } /* reading measure inside the 760px main; border-top stays full width so dividers align with how-steps/lane */
+.prose h2 { font-size: 26px; margin: 0 0 16px; color: var(--ink); }
+.prose p { color: var(--ink); margin: 0 0 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose .answer { font-size: 19px; }
+.prose ul { color: var(--ink); padding-left: 20px; margin: 0 0 14px; } /* ported: read-the-bible-with-friends weekly-rhythm list */
+.prose li { margin-bottom: 6px; }
+/* ported from christian-bereal: BeReal comparison list + affiliation fine print */
+.compare { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 12px; }
+.compare li { background: var(--parchment); border-radius: 14px; padding: 16px 18px; }
+.compare .b { color: var(--ember); font-size: 15px; }
+.compare .d { color: var(--ink); font-weight: 600; margin-top: 2px; }
+.fine { font-size: 13px; color: var(--ember); }
+/* desk accent: paper-note chrome reuse (chrome only — prose typography inherits;
+   new class so .paper-note context rules never apply) */
+.pull-card { background: var(--paper); border-radius: 16px; box-shadow: var(--shadow-card); padding: 18px 22px; transform: rotate(var(--tilt, -1deg)); margin: 28px 0; }
+/* utility pages (faq/support, moved off legal.css): bare h1/h2/hr as direct
+   children of main + the two legal.css classes their markup uses. Cluster
+   pages keep all content inside sections, so these never hit them. */
+main > h1 { font-size: 32px; margin: 0 0 8px; color: var(--ink); }
+main > h2 { font-size: 22px; margin: 32px 0 12px; color: var(--ink); }
+main > hr { border: 0; border-top: 1px solid var(--taupe); margin: 32px 0; }
+.meta { color: var(--ember-small); font-size: 14px; margin-bottom: 24px; }
+.tldr { background: var(--parchment); border-left: 4px solid var(--gold); padding: 16px 20px; border-radius: 6px; margin: 24px 0; }
+main > p a, main > ul a, main > ol a { text-decoration: underline; text-underline-offset: 3px; } /* WCAG 1.4.1 parity with .prose a */
+header.site .inner { flex-wrap: wrap; row-gap: 4px; } /* faq/support carry 5-6 nav links; lets the row wrap at 390 */
+@media (max-width: 600px) {
+  .prose h2 { font-size: 23px; }
+  main > h1 { font-size: 26px; }
+  main > h2 { font-size: 19px; }
+}
+
 /* ─── Mobile ───────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   main { padding: 40px 18px 72px; }
   body.home main { padding: 40px 0 72px; }
   .wrap { padding-left: 18px; padding-right: 18px; }
-  main section.hero h1 { font-size: 44px; }
   main section.hero .tagline, main section.hero h1.tagline { font-size: 19px; }
   main section.hero .hook { font-size: 17px; }
   section.how-steps h2, section.lane h2, section.why h2, section.faq-home h2,
