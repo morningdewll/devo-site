@@ -417,6 +417,13 @@ section.final .ticket p { color: var(--ember-small); font-size: 13.5px; margin: 
 .compare li { background: var(--parchment); border-radius: 14px; padding: 16px 18px; }
 .compare .b { color: var(--ember-small); font-size: 15px; } /* ember-small 5.08:1 on parchment; ember fails AA (4.25:1) */
 .compare .d { color: var(--ink); font-weight: 600; margin-top: 2px; }
+/* devo-vs-BeReal comparison table (christian-bereal) — machine-extractable format for AI answer engines */
+.compare-table { width: 100%; border-collapse: collapse; margin: 10px 0 0; font-size: 15px; background: var(--paper); border-radius: 14px; overflow: hidden; }
+.compare-table th, .compare-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--taupe); vertical-align: top; }
+.compare-table thead th { background: var(--parchment); color: var(--ink); font-weight: 600; }
+.compare-table tbody th { color: var(--ember-small); font-weight: 600; width: 34%; }
+.compare-table tbody td { color: var(--ink); }
+.compare-table tr:last-child th, .compare-table tr:last-child td { border-bottom: 0; }
 .fine { font-size: 13px; color: var(--ember-small); } /* token doctrine: ember-small <18px */
 /* desk accent: paper-note chrome reuse (chrome only — prose typography inherits;
    new class so .paper-note context rules never apply) */
