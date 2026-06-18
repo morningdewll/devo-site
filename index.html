@@ -328,12 +328,14 @@
           );
           return;
         }
-        if (ref && isIOS) {
+        if (ref && isIOS && /^u-[a-z0-9_]{3,24}$/i.test(ref)) {
           // referral-v2: no instant redirect on iOS — the App Store strips
           // ?ref=, so this state tells the invitee how to reconnect via the
           // in-app "Did a friend invite you?" picker. One extra tap buys back
           // the attribution iOS loses. Handle is regex-constrained before any
-          // HTML interpolation.
+          // HTML interpolation. ONLY for personal u- invites — a social s- tag
+          // is not a friend, so it falls through to the organic store button
+          // (its attribution rides the in-app "where'd you hear" question).
           var m = ref.match(/^u-([a-z0-9_]{3,24})$/i);
           var handle = m ? '@' + m[1].toLowerCase() : null;
           var overlay = document.createElement('div');
