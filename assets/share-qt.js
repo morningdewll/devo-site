@@ -91,6 +91,24 @@
     document.title = 'devo';
   }
 
+  // Fire-and-forget: count that this shared link was actually opened (web,
+  // no-app surface). Never blocks or fails the render.
+  function logOpen(id) {
+    try {
+      fetch(SUPABASE_URL + '/rest/v1/rpc/log_public_qt_open', {
+        method: 'POST',
+        headers: {
+          apikey: PUBLISHABLE_KEY,
+          Authorization: 'Bearer ' + PUBLISHABLE_KEY,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ p_qt_id: id, p_surface: 'web' }),
+      }).catch(function () {});
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
   function fetchQt(id) {
     return fetch(SUPABASE_URL + '/rest/v1/rpc/get_public_qt', {
       method: 'POST',
@@ -126,6 +144,7 @@
         host.removeChild(loading);
         if (qt && qt.body != null) {
           renderDevotion(host, qt);
+          logOpen(id);
         } else {
           renderUnavailable(host);
         }
