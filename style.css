@@ -399,6 +399,20 @@ section.final .ticket p { color: var(--ember-small); font-size: 13.5px; margin: 
 .hero-note { font-size: 24px; text-align: right; margin: 12px 0 0; transform: rotate(-1deg); }
 @media (max-width: 760px) { .dawn .hero { grid-template-columns: 1fr; padding-bottom: 56px; } }
 
+/* ─── Shared devotion page (devo.fyi/qt/<id>, rendered by assets/share-qt.js) ──
+   Reuses the global card tokens but sized for reading, not the hero thumbnail. */
+.share-wrap { padding-top: 56px; padding-bottom: 72px; }
+.share-kicker { text-align: center; font-size: 20px; margin: 0 0 18px; }
+.share-card.qt-card--unlocked { --tilt: 0deg; width: 100%; padding: 28px 30px; }
+.share-card.qt-card:hover { transform: rotate(0deg); } /* no playful un-tilt on the read surface */
+.share-card .qt-author { font-size: 15px; margin-bottom: 2px; }
+.share-card .verse-ref { display: block; font-size: 18px; margin-bottom: 14px; }
+.share-card .qt-body { font-size: 18px; line-height: 1.7; white-space: pre-wrap; }
+.share-photo-note { font-size: 14px; color: var(--ember-small); font-style: italic; margin: 16px 0 0; }
+.share-wrap .ticket { margin-top: 40px; }
+.share-wrap .ticket h2 { font-size: 22px; margin: 0; }
+.share-wrap .ticket p { color: var(--ember-small); font-size: 13.5px; margin: 6px 0 0; }
+
 /* ─── Cluster pages (Task 7, 2026-06-12) ─────────────────────────────────
    Shared scaffold for the 8 SEO cluster pages + faq/support, replacing the
    per-page <style> blocks (and legal.css on faq/support — privacy/terms/

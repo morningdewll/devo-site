@@ -14,6 +14,27 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Generic brand preview. Shared devo.fyi/qt/<id> links are served by this
+       page (GitHub Pages has no per-path file), so crawlers that do not run JS
+       see this on-brand card rather than a bare 404. Per-post previews need a
+       prerender host and are a follow-up. -->
+  <meta property="og:title" content="devo">
+  <meta property="og:description" content="A small Bible journal you share with your closest friends. Write your reflection first, then theirs unlock.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devo.fyi/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Anti-flash: on a /qt/<id> route, hide the not-found content from first
+       paint so share-qt.js can swap in the devotion with no 404 flicker. -->
+  <script>
+    if (/^\/qt\/[0-9a-fA-F-]{36}\/?$/.test(location.pathname)) {
+      document.documentElement.className += ' devo-share-route';
+    }
+  </script>
+  <style>.devo-share-route #main > section { display: none; }</style>
 </head>
 <body>
 
@@ -66,6 +87,9 @@
     </div>
     <div class="legal copyright">&copy; 2026 devo</div>
   </footer>
+
+  <!-- Renders a shared devotion when the path is /qt/<id>; no-op otherwise. -->
+  <script src="/assets/share-qt.js"></script>
 
 </body>
 </html>
