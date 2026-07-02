@@ -319,6 +319,59 @@
         var ua = navigator.userAgent || '';
         var isIOS = /iPhone|iPad|iPod/.test(ua) && !/Windows/.test(ua);
         var isAndroid = /Android/.test(ua);
+
+        // referral-v3 (Build 27): copy the invite link on the store-button tap
+        // so the app's first-launch clipboard read recovers what the App Store
+        // strips. Tap = user gesture, which navigator.clipboard requires.
+        function copyInviteOnTap(overlayEl, url) {
+          var btn = overlayEl.querySelector('a.btn-primary');
+          if (!btn || !navigator.clipboard) return;
+          btn.addEventListener('click', function () {
+            try { navigator.clipboard.writeText(url); } catch (e) { /* best effort */ }
+          });
+        }
+
+        // referral-v3: COMPOSITE group-table link (?g=CODE&ref=u-handle) — the
+        // keeper's own network lands with both the person and the room. Both
+        // tokens ride one Play referrer joined by ';' (the app splits and
+        // parks each; single-token links are unchanged below).
+        if (ref && groupCode && /^u-[a-z0-9_]{3,24}$/i.test(ref)) {
+          if (isAndroid) {
+            window.location.replace(
+              'https://play.google.com/store/apps/details?id=com.morningdewll.devo&referrer=' +
+                encodeURIComponent(ref + ';g-' + groupCode)
+            );
+            return;
+          }
+          if (isIOS) {
+            var cm = ref.match(/^u-([a-z0-9_]{3,24})$/i);
+            var cHandle = cm ? '@' + cm[1].toLowerCase() : null;
+            var cUrl = 'https://devo.fyi/?g=' + groupCode + '&ref=' + ref.toLowerCase();
+            var cOverlay = document.createElement('div');
+            cOverlay.setAttribute(
+              'style',
+              'position:fixed;inset:0;z-index:9999;background:var(--cream,#FAF7F2);' +
+                'display:flex;align-items:center;justify-content:center;padding:24px;'
+            );
+            cOverlay.innerHTML =
+              '<div style="max-width:420px;text-align:center;">' +
+              '<p style="font-family:Georgia,\'Times New Roman\',serif;font-size:28px;color:var(--ink,#2A2520);margin:0 0 12px;">' +
+              (cHandle ? cHandle + ' invited you to their group on devo' : 'You&rsquo;re invited to a group on devo') +
+              '</p>' +
+              '<p style="font-size:16px;line-height:1.5;color:var(--ember,#6B6560);margin:0 0 16px;">' +
+              'Get the app and it connects you. If it asks, your group code is:' +
+              '</p>' +
+              '<p style="font-family:Georgia,\'Times New Roman\',serif;font-size:32px;letter-spacing:6px;color:var(--ink,#2A2520);margin:0 0 28px;">' +
+              groupCode +
+              '</p>' +
+              '<a class="btn-primary" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo on the App&nbsp;Store</a>' +
+              '</div>';
+            document.body.appendChild(cOverlay);
+            copyInviteOnTap(cOverlay, cUrl);
+            return;
+          }
+        }
+
         if (ref && isAndroid) {
           // referral-v2: Play Install Referrer carries the ref through the
           // store hop; the app reads it back on first launch.
@@ -357,6 +410,7 @@
             '<a class="btn-primary" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo on the App&nbsp;Store</a>' +
             '</div>';
           document.body.appendChild(overlay);
+          copyInviteOnTap(overlay, 'https://devo.fyi/?ref=' + ref.toLowerCase());
           return;
         }
         if (groupCode && isAndroid) {
@@ -392,6 +446,7 @@
             '<a class="btn-primary" href="https://apps.apple.com/us/app/devo-quiet-time/id6768868360">Get devo on the App&nbsp;Store</a>' +
             '</div>';
           document.body.appendChild(gOverlay);
+          copyInviteOnTap(gOverlay, 'https://devo.fyi/?g=' + groupCode);
           return;
         }
 
