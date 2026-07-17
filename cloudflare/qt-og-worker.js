@@ -104,7 +104,9 @@ export default {
     const canonical = `https://devo.fyi${url.pathname}`;
 
     let title, description;
-    if (qt && qt.body != null) {
+    // Photo-only devotions carry body=null with has_image=true; any resolved
+    // payload means the link is live (the RPC returns null otherwise).
+    if (qt && (qt.body != null || qt.has_image || qt.verse_ref)) {
       const who = (qt.author && qt.author.display_name) || 'A friend';
       const ref = qt.verse_ref ? String(qt.verse_ref) : '';
       title = `${who} shared a reflection on devo`;

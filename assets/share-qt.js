@@ -142,7 +142,10 @@
     fetchQt(id)
       .then(function (qt) {
         host.removeChild(loading);
-        if (qt && qt.body != null) {
+        // A devotion can be photo-only (body null, has_image true) or even
+        // verse-only; any resolved payload means the link is live. The RPC
+        // returns JSON null for revoked/private/unknown ids.
+        if (qt && (qt.body != null || qt.has_image || qt.verse_ref)) {
           renderDevotion(host, qt);
           logOpen(id);
         } else {
