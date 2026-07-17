@@ -10,6 +10,7 @@ This repo is the apex landing page plus the legal, support, and FAQ pages. It al
 - SEO cluster pages: `post-first-devotionals.html`, `christian-bereal.html`, `christian-quiet-time-app.html`, `read-the-bible-with-friends.html`, `bible-reading-streak.html`, `christian-accountability-app.html`, `small-group-bible-app.html`, `private-christian-social-media.html`.
 - `privacy.html`, `terms.html`, `support.html`, `delete-account.html`, `faq.html`: the legal and support pages required by Apple and Google for the app stores.
 - `style.css`, `legal.css`: site styles. `style.css` covers the landing pages, `legal.css` covers the document pages.
+- `assets/js/gsap.min.js` + `assets/js/motion.js`: homepage-only motion (hero entrance, scroll reveals, locked-card float). GSAP 3.15.0 vendored locally — no CDN request. `motion.js` bails on `prefers-reduced-motion`, missing IntersectionObserver, and `?ref=`/`?g=` invite links; without JS the page is fully static and nothing is hidden.
 - `favicon.ico` / `apple-touch-icon.png` / `site.webmanifest` / `assets/`: icons, the OG share image, and the tree SVG. All icons (favicon 16/32/48, apple-touch 180, icon-192/512) and the OG sapling derive from the iOS App Store icon (`devo` repo, `assets/images/icon.png`) — regenerate with ImageMagick from that source, don't hand-redraw.
 - `.well-known/apple-app-site-association`: Apple Universal Links manifest. Lets `devo.fyi` links open inside the iOS app when it's installed.
 - `.well-known/assetlinks.json`: Android App Links manifest. Same idea for Android.
@@ -41,4 +42,4 @@ The devo project is split across four repos:
 
 ## Notes
 
-The site is built to stay small and easy to edit. No framework, no bundler, no JS dependencies. The hero text and the hook line are part of the brand voice and shouldn't be rewritten without a voice pass. If a copy change feels off, check `devo-ops/.claude/brand-voice-guidelines.md` first.
+The site is built to stay small and easy to edit. No framework, no bundler; the only JS dependency is a vendored GSAP for the homepage motion pass. The hero text and the hook line are part of the brand voice and shouldn't be rewritten without a voice pass. If a copy change feels off, check `devo-ops/.claude/brand-voice-guidelines.md` first.
